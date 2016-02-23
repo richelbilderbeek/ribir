@@ -1,75 +1,54 @@
 # Stretch matrix 'm' with a timestep resolution of 'dt'
 
+#' Stretch a matrix
+#'
+#' @param m A matrix of 2 columns and at least 2 rows
+#' @param dt The resultion, a value e <0,1]
+#' @param step_type can be 'lower' or 'upper
+#' @return The stretched matrix
+#' @examples
+#'   m <- matrix( c(c(0.0,1.0), c(0.5,1.0)), ncol = 2, nrow = 2)
+#'   expected <- matrix(
+#'     c(
+#'       c(0.0,0.5,1.0),  # Timepoints
+#'       c(0.5,0.5,1.0)   # Values
+#'     ),
+#'     ncol = 2, nrow = 3
+#'   )
+#'   result <- stretch_nltt_matrix(m = test, dt = 1.0/3)
+#'   assert(identical(result,expected))
+#'
+#' @export
 stretch_nltt_matrix <- function(
   m,
-  dt
+  dt,
+  step_type = "lower"
 ) {
   # Stretch matrix 'm' with a timestep resolution of 'dt'
-  
-  # Fill in the timepoints:
-  #
-  # t   N
-  # 0.0 0.2
-  # 0.4 0.5
-  # 1.0 1.0
-  #
-  # becomes
-  #
-  # t   N
-  # 0.0 0.2
-  # 0.1 0.2
-  # 0.2 0.2
-  # 0.3 0.2
-  # 0.4 0.5
-  # 0.5 0.5
-  # 0.6 0.5
-  # 0.7 0.5
-  # 0.8 0.5
-  # 0.9 0.5
-  # 1.0 1.0
-  #
-  # I need to reverse the timepoints
-  
-  
-  # If the matrix has multiple Ns for the same t, take the lowest 
-  m<-aggregate(
-    x=m,
-    by=list(factor(m[,1])),
-    FUN="min"
-  )
+  assert(is.matrix(m))
+  assert(ncol(m) == 2)
+  assert(nrow(m) >= 2)
+  assert(step_type == "lower" || step_type == "upper")
 
-  # Create vectors, mirror the ts
-  #
-  # The ts must be mirrored, 
-  # because from the points indicated by an asterisk,
-  # the 'equals sign line' must be generated,
-  # where approx will produce the dotted line
-  #
-  # |
-  # |               +=========*
-  # |               |         .
-  # |   +===========*..........
-  # |   |           .
-  # |   *............
-  # |
-  # +--------------------------
-  #
-  ns <- as.numeric(m[,3]) # N
-  ts <- 1.0 - as.numeric(m[,2]) # t
-  
-  a <- approx(ts, ns, method = "constant", n = 1 / dt)
+  # Prepare a new matrix called n
+  n_nrow <- 1 + (1 / dt)
+  n_ts <- seq(0.0,1.0,dt)
+  n_ns <- rep(NA,times = n_nrow)
+  n <- matrix( c(n_ts,n_ns), ncol = 2, nrow = n_nrow)
+  names(n) <- names(m)
 
-  # Mirror the ts again
-  new_ts <- 1.0 - a$x
-  new_ns <- a$y
-  assert(length(new_ts) == length(new_ns))
-  n <- matrix(
-    data = c(new_ts,new_ns),
-    nrow = length(new_ts),
-    ncol = 2,
-    byrow = FALSE,
-  )
-  return (n)
+  # Fill in the N's in n
+  m_row_index <- 1
+  for (n_row_index in seq(1,n_nrow)) {
+    if (n[n_row_index,1] >= m[m_row_index + 1,1]) {
+      m_row_index <- m_row_index + 1
+      #print("New m_row_index: ")
+      #print(m_row_index)
+    }
+    n[n_row_index,2] <- m[m_row_index + ifelse(step_type == "lower",0,1) ,2]
+  }
+  n
 }
+
 
 

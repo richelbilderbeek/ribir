@@ -1,3 +1,4 @@
+library(ape)
 library(testthat)
 library(ribir)
 library(nLTT)

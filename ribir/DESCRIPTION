@@ -5,7 +5,9 @@ Imports:
     nLTT (>= 1.1),
     testit (>= 0.5)
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 Title: My personal R package
 Version: 0.0.0.9000
 Authors@R: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"))
@@ -16,3 +18,4 @@ Depends:
 License: GPL-3
 LazyData: true
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr
