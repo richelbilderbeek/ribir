@@ -33,6 +33,14 @@ stretch_nltt_matrix <- function(
   assert(nrow(m) >= 2)
   assert(step_type == "lower" || step_type == "upper")
 
+  # Remove rows with same t's, take the first
+  rows_to_delete <- NULL
+  for (i in seq(1,nrow(m) - 1)) { # -1 because in the body i+1 will be used
+    if (m[i, 1] == m[i + 1, 1]) { rows_to_delete = c(rows_to_delete,i + 1) }
+  }
+  if (!is.null(rows_to_delete)) {
+    m <- m[ -rows_to_delete, ]
+  }
 
   # Prepare a new matrix called n
   n_nrow <- 1 + (1 / dt)

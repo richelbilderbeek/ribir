@@ -3,6 +3,7 @@ title: "vignette_stretch_nltt_matrix"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+#output: pdf_document
 vignette: >
   %\VignetteIndexEntry{vignette_stretch_nltt_matrix}
   %\VignetteEngine{knitr::rmarkdown}

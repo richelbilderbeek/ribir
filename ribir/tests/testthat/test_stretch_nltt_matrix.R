@@ -63,7 +63,7 @@ test_that("stretch_nltt_matrix #2", {
 
 
 test_that("stretch_nltt_matrix from vignette, ", {
-  skip("Fix issue #1")
+  #skip("Fix issue #1")
   # t   N      t   N
   # 0.0 0.3    0.00 0.3
   # 0.4 0.5    0.25 0.3
