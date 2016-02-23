@@ -30,7 +30,7 @@ test_that("stretch_nltt_matrix #1", {
   expect_equal(identical(result,expected), TRUE)
 })
 
-test_that("stretch_nltt_matrix #1", {
+test_that("stretch_nltt_matrix #2", {
   # t   N      t   N
   # 0.0 0.3    0.00 0.3
   # 0.4 0.5    0.25 0.3
@@ -56,6 +56,43 @@ test_that("stretch_nltt_matrix #1", {
   }
   expect_equal(identical(result,expected), TRUE)
 })
+
+
+
+
+
+
+test_that("stretch_nltt_matrix from vignette, ", {
+  skip("Fix issue #1")
+  # t   N      t   N
+  # 0.0 0.3    0.00 0.3
+  # 0.4 0.5    0.25 0.3
+  #            0.50 0.5
+  #         -> 0.75 0.5
+  # 1.0 1.0    1.00 1.0
+  newick <- "((A:1,B:1):1,(C:1,D:1):1);"
+  phylogeny <- read.tree(text = newick)
+  nltt <- ribir::get_phylogeny_nltt_matrix(phylogeny)
+  result <- stretch_nltt_matrix(nltt,dt = 0.25, step_type = "upper")
+
+  expected <- matrix(
+    c(
+      c(0.00,0.25,0.50,0.75,1.00),
+      c(0.50,0.50,1.00,1.00,1.00)
+    ),
+    ncol = 2, nrow = 5
+  )
+  if (!identical(result,expected)) {
+    print("ERROR")
+    print("result:")
+    print(result)
+    print("expected:")
+    print(expected)
+  }
+  expect_equal(identical(result,expected), TRUE)
+})
+
+
 
 
 test_that("stretch_nltt_matrix #3", {

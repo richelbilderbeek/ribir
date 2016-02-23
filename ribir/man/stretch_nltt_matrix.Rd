@@ -4,7 +4,7 @@
 \alias{stretch_nltt_matrix}
 \title{Stretch a matrix}
 \usage{
-stretch_nltt_matrix(m, dt, step_type = "upper")
+stretch_nltt_matrix(m, dt, step_type = "lower")
 }
 \arguments{
 \item{m}{A matrix of 2 columns and at least 2 rows}
