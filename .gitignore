@@ -20,3 +20,4 @@ vignettes/*.pdf
 .Rproj.user
 *.tar.gz
 ribir.Rcheck/
+Rplots.pdf

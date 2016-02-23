@@ -24,11 +24,15 @@ stretch_nltt_matrix <- function(
   dt,
   step_type = "lower"
 ) {
-  # Stretch matrix 'm' with a timestep resolution of 'dt'
+  if (FALSE) { # DEBUG
+    dt <- 0.5
+    step_type <- "upper"
+  }
   assert(is.matrix(m))
   assert(ncol(m) == 2)
   assert(nrow(m) >= 2)
   assert(step_type == "lower" || step_type == "upper")
+
 
   # Prepare a new matrix called n
   n_nrow <- 1 + (1 / dt)
@@ -36,14 +40,16 @@ stretch_nltt_matrix <- function(
   n_ns <- rep(NA,times = n_nrow)
   n <- matrix( c(n_ts,n_ns), ncol = 2, nrow = n_nrow)
   names(n) <- names(m)
+  m <- rbind(m,c(1.0,1.0))
 
   # Fill in the N's in n
   m_row_index <- 1
   for (n_row_index in seq(1,n_nrow)) {
     if (n[n_row_index,1] >= m[m_row_index + 1,1]) {
+      assert(m_row_index + 1 <= nrow(m))
       m_row_index <- m_row_index + 1
-      #print("New m_row_index: ")
-      #print(m_row_index)
+#       print("New m_row_index: ")
+#       print(m_row_index)
     }
     n[n_row_index,2] <- m[m_row_index + ifelse(step_type == "lower",0,1) ,2]
   }

@@ -1,13 +1,3 @@
-# source("~/GitHubs/R/Phylogenies/get_phylogeny_nltt_matrix.R")
-# source("~/GitHubs/R/Phylogenies/stretch_nltt_matrix.R")
-# source("~/GitHubs/R/MyFavoritePackages/TreeSim/R/LTT.general.R")
-# source("~/GitHubs/R/MyFavoritePackages/TreeSim/R/LTT.average.root.R")
-#
-# library(ape)
-# library(geiger)
-# library(nLTT)
-# library(testit)
-
 #' Get the average nLTT from a collection of phylogenies
 #'
 #' @param phylogenies the phylogenies, where the phylogenies are of type 'phylo'

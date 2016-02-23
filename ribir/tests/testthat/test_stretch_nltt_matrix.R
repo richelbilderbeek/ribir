@@ -5,8 +5,7 @@ library(testit)
 #devtools::load_all()
 #devtools::use_testthat()
 
-
-test_that("stretch_nltt_matrix simple", {
+test_that("stretch_nltt_matrix #1", {
   # t   N      t   N
   # 0.0 0.5    0.0 0.5
   #         -> 0.5 0.5
@@ -21,16 +20,45 @@ test_that("stretch_nltt_matrix simple", {
     ncol = 2, nrow = 3
   )
   result <- stretch_nltt_matrix(m = m, dt = 1.0/2)
-  if (FALSE) {
-    print("RESULT")
+  if (!identical(result,expected)) {
+    print("ERROR")
+    print("result:")
     print(result)
-    print("EXPECTED")
+    print("expected:")
     print(expected)
   }
   expect_equal(identical(result,expected), TRUE)
 })
 
-test_that("stretch_nltt_matrix 2", {
+test_that("stretch_nltt_matrix #1", {
+  # t   N      t   N
+  # 0.0 0.3    0.00 0.3
+  # 0.4 0.5    0.25 0.3
+  #            0.50 0.5
+  #         -> 0.75 0.5
+  # 1.0 1.0    1.00 1.0
+  m <- matrix( c(c(0.0,0.4,1.0), c(0.3,0.5,1.0)), ncol = 2, nrow = 3)
+  colnames(m) <- c("t","N")
+  expected <- matrix(
+    c(
+      seq(0.0,1.0,0.25),
+      c(0.3,0.3,0.5,0.5,1.0)
+    ),
+    ncol = 2, nrow = 5
+  )
+  result <- stretch_nltt_matrix(m = m, dt = 0.25)
+  if (!identical(result,expected)) {
+    print("ERROR")
+    print("result:")
+    print(result)
+    print("expected:")
+    print(expected)
+  }
+  expect_equal(identical(result,expected), TRUE)
+})
+
+
+test_that("stretch_nltt_matrix #3", {
   # Fill in the timepoints:
   #
   # t   N
@@ -61,11 +89,12 @@ test_that("stretch_nltt_matrix 2", {
       rep(0.2,times = 4),rep(0.5, times = 6), 1.0),
       ncol = 2, nrow = 11
   )
-  result <- stretch_nltt_matrix(m = test, dt = 1.0/10)
-  if (FALSE) {
-    print("RESULT")
+  result <- stretch_nltt_matrix(m = test, dt = 0.1)
+  if (!identical(result,expected)) {
+    print("ERROR")
+    print("result:")
     print(result)
-    print("EXPECTED")
+    print("expected:")
     print(expected)
   }
   expect_equal(identical(result,expected), TRUE)
