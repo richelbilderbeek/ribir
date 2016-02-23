@@ -6,6 +6,8 @@
 #' @examples
 #'   get_average_nllt(rcoal(10))
 #'   get_average_nllt(rcoal(10), dt = 0.1)
+#'
+#' @export
 get_average_nltt <- function(
   phylogenies,
   dt = 0.001,

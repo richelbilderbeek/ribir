@@ -22,5 +22,6 @@ Get the average nLTT from a collection of phylogenies
 \examples{
   get_average_nllt(rcoal(10))
   get_average_nllt(rcoal(10), dt = 0.1)
+
 }
 
