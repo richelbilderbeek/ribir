@@ -1,10 +1,3 @@
-library(nLTT)
-library(testit)
-# library(TreeSim)
-#library(devtools)
-#devtools::load_all()
-#devtools::use_testthat()
-
 test_that("stretch_nltt_matrix #1", {
   # t   N      t   N
   # 0.0 0.5    0.0 0.5
@@ -19,7 +12,7 @@ test_that("stretch_nltt_matrix #1", {
     ),
     ncol = 2, nrow = 3
   )
-  result <- stretch_nltt_matrix(m = m, dt = 1.0/2)
+  result <- stretch_nltt_matrix(m = m, dt = 1.0/2, step_type = "lower")
   if (!identical(result,expected)) {
     print("ERROR")
     print("result:")
@@ -46,7 +39,7 @@ test_that("stretch_nltt_matrix #2", {
     ),
     ncol = 2, nrow = 5
   )
-  result <- stretch_nltt_matrix(m = m, dt = 0.25)
+  result <- stretch_nltt_matrix(m = m, dt = 0.25, step_type = "lower")
   if (!identical(result,expected)) {
     print("ERROR")
     print("result:")
@@ -63,7 +56,6 @@ test_that("stretch_nltt_matrix #2", {
 
 
 test_that("stretch_nltt_matrix from vignette, ", {
-  #skip("Fix issue #1")
   # t   N      t   N
   # 0.0 0.3    0.00 0.3
   # 0.4 0.5    0.25 0.3
@@ -126,7 +118,7 @@ test_that("stretch_nltt_matrix #3", {
       rep(0.2,times = 4),rep(0.5, times = 6), 1.0),
       ncol = 2, nrow = 11
   )
-  result <- stretch_nltt_matrix(m = test, dt = 0.1)
+  result <- stretch_nltt_matrix(m = test, dt = 0.1, step_type = "lower")
   if (!identical(result,expected)) {
     print("ERROR")
     print("result:")

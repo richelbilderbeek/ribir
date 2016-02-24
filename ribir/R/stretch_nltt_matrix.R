@@ -13,14 +13,14 @@
 #'     ),
 #'     ncol = 2, nrow = 3
 #'   )
-#'   result <- stretch_nltt_matrix(m = m, dt = 0.5)
+#'   result <- stretch_nltt_matrix(m = m, dt = 0.5, step_type = "lower")
 #'   testit::assert(identical(result,expected))
 #'
 #' @export
 stretch_nltt_matrix <- function(
   m,
   dt,
-  step_type = "lower"
+  step_type
 ) {
   if (FALSE) { # DEBUG
     dt <- 0.5

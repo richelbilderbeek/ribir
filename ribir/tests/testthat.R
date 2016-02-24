@@ -1,6 +1,6 @@
 library(ape)
 library(testthat)
 library(ribir)
-library(nLTT)
+#library(nLTT)
 
 test_check("ribir")

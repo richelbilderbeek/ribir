@@ -4,7 +4,7 @@
 \alias{stretch_nltt_matrix}
 \title{Stretch matrix 'm' with a timestep resolution of 'dt'}
 \usage{
-stretch_nltt_matrix(m, dt, step_type = "lower")
+stretch_nltt_matrix(m, dt, step_type)
 }
 \arguments{
 \item{m}{A matrix of 2 columns and at least 2 rows}
@@ -28,7 +28,7 @@ Stretch matrix 'm' with a timestep resolution of 'dt'
     ),
     ncol = 2, nrow = 3
   )
-  result <- stretch_nltt_matrix(m = m, dt = 0.5)
+  result <- stretch_nltt_matrix(m = m, dt = 0.5, step_type = "lower")
   testit::assert(identical(result,expected))
 
 }

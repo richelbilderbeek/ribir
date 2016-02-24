@@ -1,7 +1,6 @@
 Package: ribir
 Imports:
     ape (>= 3.4),
-    geiger (>= 2.0),
     nLTT (>= 1.1),
     testit (>= 0.5)
 Suggests:

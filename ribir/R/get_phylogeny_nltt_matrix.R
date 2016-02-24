@@ -5,8 +5,8 @@
 #'
 #' @export
 get_phylogeny_nltt_matrix <- function(phylogeny) {
-  # Obtain the matrix from an nLTT plot
-  if (class(phylogeny) != "phylo") {
+  if (!inherits(phylogeny, "phylo")) {
+    # Stop imposed by ape::ltt.plot.coords
     stop("get_phylogeny_nltt_matrix: phylogeny must be of class 'phylo', but was of type '",class(phylogeny),"' instead")
   }
   xy <- ape::ltt.plot.coords(phylogeny, backward = TRUE, tol = 1e-06)

@@ -101,3 +101,36 @@ test_that("get_average_nltt_matrix: How to stretch an nLTT timepoints matrix: Ex
   expect_equal(all.equal(nltt_matrix2,expected_nltt_matrix2),TRUE)
 })
 
+
+
+test_that("get_average_nltt_matrix: speed comparison", {
+  skip_on_cran()
+  if (FALSE) {
+    ??ape::multiPhylo
+    ?li
+    n_trees <- 10
+    n_tips <- 10
+    phylogenies <- ape::rmtree(N = n_trees, n = n_tips)
+    ?ape::rmtree
+    phylogenies <- plyr::laply(phylogenies, function(x) { ape::drop.fossil(x) } )
+    phylogenies
+    plot(phylogenies[1])
+    ??ape::drop.fossil
+    class(phylogenies)
+    class(phylogenies[[1]])
+
+    a <- replicate(N, rtree(n, rooted = rooted, tip.label = tip.label,
+      br = br, ...), simplify = FALSE)
+
+    phylogenies <- TreeSim::sim.bd.age(15, numbsim = n_trees, lambda = 0.5, mu = 0.5)
+    class(phylogenies) <- "multiPhylo"
+    testit::assert(class(phylogenies) == "multiPhylo")
+    testit::assert(class(phylogenies[[1]]) == "phylo")
+
+    get_average_nltt(phylogenies)
+
+    plot(phylogenies[2])
+    ?rep
+  }
+  expect_equal(TRUE, TRUE)
+})
