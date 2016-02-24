@@ -102,17 +102,41 @@ test_that("get_average_nltt_matrix: How to stretch an nLTT timepoints matrix: Ex
 })
 
 
+test_that("get_average_nltt_matrix: data types", {
+  # Create a list or multiPhylo of phylogenies (of type phylo)
+  # and run it through the get_average_nltt_matrix function
+
+  n_trees <- 2
+  n_tips <- 3
+  set.seed(41)
+  ape_phylogenies <- ape::rmtree(N = n_trees, n = n_tips)
+  m <- get_average_nltt_matrix(ape_phylogenies)
+  #plot(m)
+  expect_equal(ncol(m),2)
+  expect_equal(nrow(m),1001)
+
+  set.seed(41)
+  treesim_phylogenies <- TreeSim::sim.bd.age(6, numbsim = n_trees, lambda = 0.4, mu = 0.0, complete = FALSE)
+  n <- get_average_nltt_matrix(treesim_phylogenies)
+  #plot(n)
+  expect_equal(ncol(n),2)
+  expect_equal(nrow(n),1001)
+
+  combined_phylogenies <- c(ape::rcoal(10),ape::rcoal(20))
+  p <- get_average_nltt_matrix(combined_phylogenies)
+  #plot(p)
+  expect_equal(ncol(p),2)
+  expect_equal(nrow(p),1001)
+
+})
 
 test_that("get_average_nltt_matrix: speed comparison", {
   skip_on_cran()
   if (FALSE) {
     ??ape::multiPhylo
     ?li
-    n_trees <- 10
-    n_tips <- 10
     phylogenies <- ape::rmtree(N = n_trees, n = n_tips)
     ?ape::rmtree
-    phylogenies <- plyr::laply(phylogenies, function(x) { ape::drop.fossil(x) } )
     phylogenies
     plot(phylogenies[1])
     ??ape::drop.fossil
@@ -122,11 +146,18 @@ test_that("get_average_nltt_matrix: speed comparison", {
     a <- replicate(N, rtree(n, rooted = rooted, tip.label = tip.label,
       br = br, ...), simplify = FALSE)
 
-    phylogenies <- TreeSim::sim.bd.age(15, numbsim = n_trees, lambda = 0.5, mu = 0.5)
+    phylogenies <- TreeSim::sim.bd.age(10, numbsim = n_trees, lambda = 0.5, mu = 0.1, complete = FALSE)
+    phylogenies
+    ?TreeSim::sim.bd.age
+    length(phylogenies)
+
+
+    phylogenies <- lapply(phylogenies, FUN = function(x) { class(x) <- "phylo"; return (x) } )
     class(phylogenies) <- "multiPhylo"
     testit::assert(class(phylogenies) == "multiPhylo")
     testit::assert(class(phylogenies[[1]]) == "phylo")
-
+    plot(phylogenies[1])
+    testit::assert(is.ultrametric(phylogenies[[1]]))
     get_average_nltt(phylogenies)
 
     plot(phylogenies[2])

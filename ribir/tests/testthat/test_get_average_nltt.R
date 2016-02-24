@@ -6,3 +6,23 @@ test_that("get_average_nltt: create some plots", {
   phylogeny2 <- ape::read.tree(text = newick2)
   ribir::get_average_nltt(c(phylogeny1,phylogeny2), dt = 0.20, plot_nltts = TRUE)
 })
+
+test_that("get_average_nltt: check data types", {
+  # Create a list or multiPhylo of phylogenies (of type phylo)
+  # and run it through the get_average_nltt function
+
+  n_trees <- 2
+  n_tips <- 3
+  set.seed(41)
+  ape_phylogenies <- ape::rmtree(N = n_trees, n = n_tips)
+  get_average_nltt(ape_phylogenies)
+
+  set.seed(41)
+  treesim_phylogenies <- TreeSim::sim.bd.age(6, numbsim = n_trees, lambda = 0.4, mu = 0.0, complete = FALSE)
+  get_average_nltt(treesim_phylogenies)
+
+  set.seed(41)
+  combined_phylogenies <- c(ape::rcoal(10),ape::rcoal(20))
+  get_average_nltt(combined_phylogenies)
+
+})

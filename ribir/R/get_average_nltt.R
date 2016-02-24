@@ -22,8 +22,15 @@ get_average_nltt <- function(
   replot = FALSE,
   ...
 ) {
-  if (class(phylogenies) != "multiPhylo") {
-    warning("get_average_nltt: phylogenies must be of class 'multiPhylo', used '",class(phylogenies),"' instead")
+  if (class(phylogenies) != "multiPhylo" && class(phylogenies) != "list") {
+    stop("get_average_nltt_matrix: phylogenies must be of class 'multiPhylo' or 'list', used '",class(phylogenies),"' instead")
+  }
+  if (length(phylogenies) < 1) {
+    stop("get_average_nltt_matrix: there must be at least one phylogeny supplied")
+  }
+  if (!inherits(phylogenies[[1]], "phylo")) {
+    # Stop imposed by ape::ltt.plot.coords
+    stop("get_average_nltt_matrix: phylogenies must be of type phylo, instead of '",class(phylogenies[[1]]),"'")
   }
   if (dt <= 0.0 || dt >= 1.0) {
     stop("get_average_nltt: dt must be between (not including) zero and one, dt was ",dt," instead")

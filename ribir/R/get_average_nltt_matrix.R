@@ -1,6 +1,6 @@
 #' Get the average nLTT from a collection of phylogenies
 #'
-#' @param phylogenies the phylogenies, where the phylogenies are of type 'phylo'
+#' @param phylogenies the phylogenies, supplied as either a list or a multiPhylo object, where the phylogenies are of type 'phylo'
 #' @param dt The timestep resolution, where 1/dt is the number of points evaluated
 #' @return A matrix of timepoints with the average number of (normalized) lineages through (normalized) time
 #' @examples
@@ -10,8 +10,8 @@
 get_average_nltt_matrix <- function(
   phylogenies,
   dt = 0.001) {
-  if (class(phylogenies) != "multiPhylo") {
-    warning("get_average_nltt_matrix: phylogenies must be of class 'multiPhylo', used '",class(phylogenies),"' instead")
+  if (class(phylogenies) != "multiPhylo" && class(phylogenies) != "list") {
+    stop("get_average_nltt_matrix: phylogenies must be of class 'multiPhylo' or 'list', used '",class(phylogenies),"' instead")
   }
   if (length(phylogenies) < 1) {
     stop("get_average_nltt_matrix: there must be at least one phylogeny supplied")
