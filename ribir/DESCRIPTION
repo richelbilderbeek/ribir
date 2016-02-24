@@ -10,12 +10,13 @@ Suggests:
     rmarkdown
 Title: My personal R package
 Version: 0.0.0.9000
-Authors: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"))
-Description: This is my personal R package, that is a collection of my personal
-    code snippets.
+Authors@R: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"))
+Description: This is my personal R package, that is a collection of my personal code snippets.
 Depends:
     R (>= 3.2.3)
 License: GPL-3
 LazyData: true
 RoxygenNote: 5.0.1
 VignetteBuilder: knitr
+URL: https://github.com/richelbilderbeek/ribir
+BugReports: https://github.com/richelbilderbeek/ribir/issues

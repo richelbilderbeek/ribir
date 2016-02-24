@@ -12,6 +12,16 @@ get_average_nltt(phylogenies, dt = 0.001, plot_nltts = FALSE,
 \item{phylogenies}{the phylogenies, where the phylogenies are of type 'phylo'}
 
 \item{dt}{The timestep resolution, where 1/dt is the number of points evaluated}
+
+\item{plot_nltts}{Also plot each nLLT line}
+
+\item{xlab}{Label on the x axis}
+
+\item{ylab}{Label on the y axis}
+
+\item{replot}{If false, start a clean plot. If true, plot the new data over the current}
+
+\item{...}{Plotting options}
 }
 \value{
 Nothing
@@ -20,8 +30,8 @@ Nothing
 Get the average nLTT from a collection of phylogenies
 }
 \examples{
-  get_average_nllt(rcoal(10))
-  get_average_nllt(rcoal(10), dt = 0.1)
+  get_average_nltt(c(ape::rcoal(10),ape::rcoal(10)))
+  get_average_nltt(c(ape::rcoal(10),ape::rcoal(20)), dt = 0.1)
 
 }
 

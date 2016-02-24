@@ -1,6 +1,4 @@
-# Stretch matrix 'm' with a timestep resolution of 'dt'
-
-#' Stretch a matrix
+#' Stretch matrix 'm' with a timestep resolution of 'dt'
 #'
 #' @param m A matrix of 2 columns and at least 2 rows
 #' @param dt The resultion, a value e <0,1]
@@ -15,8 +13,8 @@
 #'     ),
 #'     ncol = 2, nrow = 3
 #'   )
-#'   result <- stretch_nltt_matrix(m = test, dt = 1.0/3)
-#'   assert(identical(result,expected))
+#'   result <- stretch_nltt_matrix(m = m, dt = 0.5)
+#'   testit::assert(identical(result,expected))
 #'
 #' @export
 stretch_nltt_matrix <- function(
@@ -28,10 +26,18 @@ stretch_nltt_matrix <- function(
     dt <- 0.5
     step_type <- "upper"
   }
-  assert(is.matrix(m))
-  assert(ncol(m) == 2)
-  assert(nrow(m) >= 2)
-  assert(step_type == "lower" || step_type == "upper")
+  if (!is.matrix(m)) {
+    stop("stretch_nltt_matrix: m must be a matrix, ",
+      "m is of class '",class(m),"' instead")
+  }
+  if (ncol(m) != 2) {
+    stop("stretch_nltt_matrix: m must have two columns, ",
+      "m has ",ncol(m)," columns instead")
+  }
+  if (step_type != "lower" && step_type != "upper") {
+    stop("stretch_nltt_matrix: step_type must be either 'lower' or 'upper', ",
+      "step_size supplied was '",step_size,"' instead")
+  }
 
   # Remove rows with same t's, take the first
   rows_to_delete <- NULL
@@ -54,7 +60,7 @@ stretch_nltt_matrix <- function(
   m_row_index <- 1
   for (n_row_index in seq(1,n_nrow)) {
     if (n[n_row_index,1] >= m[m_row_index + 1,1]) {
-      assert(m_row_index + 1 <= nrow(m))
+      testit::assert(m_row_index + 1 <= nrow(m))
       m_row_index <- m_row_index + 1
 #       print("New m_row_index: ")
 #       print(m_row_index)

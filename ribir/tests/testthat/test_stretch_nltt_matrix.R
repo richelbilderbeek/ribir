@@ -71,7 +71,7 @@ test_that("stretch_nltt_matrix from vignette, ", {
   #         -> 0.75 0.5
   # 1.0 1.0    1.00 1.0
   newick <- "((A:1,B:1):1,(C:1,D:1):1);"
-  phylogeny <- read.tree(text = newick)
+  phylogeny <- ape::read.tree(text = newick)
   nltt <- ribir::get_phylogeny_nltt_matrix(phylogeny)
   result <- stretch_nltt_matrix(nltt,dt = 0.25, step_type = "upper")
 

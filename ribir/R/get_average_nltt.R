@@ -2,10 +2,15 @@
 #'
 #' @param phylogenies the phylogenies, where the phylogenies are of type 'phylo'
 #' @param dt The timestep resolution, where 1/dt is the number of points evaluated
+#' @param plot_nltts Also plot each nLLT line
+#' @param xlab Label on the x axis
+#' @param ylab Label on the y axis
+#' @param replot If false, start a clean plot. If true, plot the new data over the current
+#' @param ... Plotting options
 #' @return Nothing
 #' @examples
-#'   get_average_nllt(rcoal(10))
-#'   get_average_nllt(rcoal(10), dt = 0.1)
+#'   get_average_nltt(c(ape::rcoal(10),ape::rcoal(10)))
+#'   get_average_nltt(c(ape::rcoal(10),ape::rcoal(20)), dt = 0.1)
 #'
 #' @export
 get_average_nltt <- function(
@@ -17,36 +22,12 @@ get_average_nltt <- function(
   replot = FALSE,
   ...
 ) {
-  #  phylogenies,
-  #  dt: delta t, resolution of the averaged nLTT, where smaller is a higher resolution
-  #  plot_nltts = FALSE,
-  #  xlab: label on x axis
-  #  ylab: label on y axis
-  #  replot: if FALSE, a new plot is started, if TRUE, the lines is drawn over an assumed-to-be-present plot
-  #  ...
-  assert(dt > 0.0)
-  assert(dt < 1.0)
-
-  sz <- length(phylogenies)
-
-  nltts <- NULL
-  for (phylogeny in phylogenies) {
-    nltts <- c(nltts,list(get_phylogeny_nltt_matrix(phylogeny)))
+  if (dt <= 0.0 || dt >= 1.0) {
+    stop("get_average_nltt: dt must be between (not including) zero and one, dt was ",dt," instead")
   }
-  assert(length(nltts) == length(phylogenies))
 
-  stretch_matrices <- NULL
-  for (nltt in nltts) {
-    stretch_matrix <- stretch_nltt_matrix(nltt,dt = dt)
-    stretch_matrices <- c(stretch_matrices,list(stretch_matrix))
-  }
-  assert(length(stretch_matrices) == length(nltts))
 
-  xy <- stretch_matrices[[1]]
-  for (i in seq(2,sz)) {
-    xy <- (xy + stretch_matrices[[i]])
-  }
-  xy <- (xy / sz)
+  xy <- ribir::get_average_nltt_matrix(phylogenies = phylogenies, dt = dt)
 
   # Set the shape of the plot
   if (replot == FALSE) {
@@ -65,6 +46,23 @@ get_average_nltt <- function(
 
   # Draw the nLTTS plots used
   if (plot_nltts == TRUE) {
+    # Copied
+    sz <- length(phylogenies)
+
+    nltts <- NULL
+    for (phylogeny in phylogenies) {
+      nltts <- c(nltts,list(get_phylogeny_nltt_matrix(phylogeny)))
+    }
+    testit::assert(length(nltts) == length(phylogenies))
+
+    stretch_matrices <- NULL
+    for (nltt in nltts) {
+      stretch_matrix <- stretch_nltt_matrix(nltt,dt = dt, step_type = "upper")
+      stretch_matrices <- c(stretch_matrices,list(stretch_matrix))
+    }
+    testit::assert(length(stretch_matrices) == length(nltts))
+    # End of copy
+
     for (stretch_matrix in stretch_matrices) {
       lines.default(
         stretch_matrix,

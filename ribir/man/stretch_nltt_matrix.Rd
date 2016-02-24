@@ -2,7 +2,7 @@
 % Please edit documentation in R/stretch_nltt_matrix.R
 \name{stretch_nltt_matrix}
 \alias{stretch_nltt_matrix}
-\title{Stretch a matrix}
+\title{Stretch matrix 'm' with a timestep resolution of 'dt'}
 \usage{
 stretch_nltt_matrix(m, dt, step_type = "lower")
 }
@@ -17,7 +17,7 @@ stretch_nltt_matrix(m, dt, step_type = "lower")
 The stretched matrix
 }
 \description{
-Stretch a matrix
+Stretch matrix 'm' with a timestep resolution of 'dt'
 }
 \examples{
   m <- matrix( c(c(0.0,1.0), c(0.5,1.0)), ncol = 2, nrow = 2)
@@ -28,8 +28,8 @@ Stretch a matrix
     ),
     ncol = 2, nrow = 3
   )
-  result <- stretch_nltt_matrix(m = test, dt = 1.0/3)
-  assert(identical(result,expected))
+  result <- stretch_nltt_matrix(m = m, dt = 0.5)
+  testit::assert(identical(result,expected))
 
 }
 

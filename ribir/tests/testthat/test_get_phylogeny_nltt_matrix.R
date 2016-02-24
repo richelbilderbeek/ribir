@@ -1,6 +1,6 @@
 
+
 test_that("get_phylogeny_nltt_matrix #1", {
-  library(testit)
 
   #
   #         +-------- A
@@ -24,7 +24,7 @@ test_that("get_phylogeny_nltt_matrix #1", {
   # [2,]  0.5 0.6666667
   # [3,]  1.0 1.0000000
   newick <- "((A:1,B:1):1,C:2);"
-  phylogeny <- read.tree(text = newick)
+  phylogeny <- ape::read.tree(text = newick)
   #plot(phylogeny)
   #nLTT.plot(phylogeny)
   result <- ribir::get_phylogeny_nltt_matrix(phylogeny)
@@ -65,7 +65,7 @@ test_that("get_phylogeny_nltt_matrix #2", {
   # [4,]  1.0 1.0
 
   newick <- "((A:1,B:1):1,(C:1,D:1):1);"
-  phylogeny <- read.tree(text = newick)
+  phylogeny <- ape::read.tree(text = newick)
   #plot(phylogeny)
   #nLTT.plot(phylogeny)
   result <- ribir::get_phylogeny_nltt_matrix(phylogeny)
