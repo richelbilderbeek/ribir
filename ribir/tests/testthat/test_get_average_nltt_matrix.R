@@ -144,8 +144,8 @@ test_that("get_average_nltt_matrix: speed comparison", {
     }
   }
   timings <- microbenchmark::microbenchmark(
-    get_average_nltt_matrix(treesim_phylogenies, dt = 0.1),
-    get_average_nltt_matrix(treesim_phylogenies, dt = 0.01),
+    get_average_nltt_matrix_impl_1(treesim_phylogenies, dt = 0.1),
+    get_average_nltt_matrix_impl_2(treesim_phylogenies, dt = 0.01),
     times = 2
   )
   timings_summary <- summary(timings)
