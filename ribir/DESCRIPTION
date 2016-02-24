@@ -3,10 +3,11 @@ Imports:
     ape (>= 3.4),
     testit (>= 0.5)
 Suggests:
-    knitr,
+    knitr (>= 1.12),
     nLTT (>= 1.1),
-    rmarkdown,
-    testthat,
+    rmarkdown (>= 0.9),
+    testthat (>= 0.11),
+    microbenchmark (>= 1.4),
     TreeSim (>= 2.2)
 Title: My personal R package
 Version: 0.0.0.9000

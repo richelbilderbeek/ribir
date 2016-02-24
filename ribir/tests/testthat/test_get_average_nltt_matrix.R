@@ -132,36 +132,23 @@ test_that("get_average_nltt_matrix: data types", {
 
 test_that("get_average_nltt_matrix: speed comparison", {
   skip_on_cran()
-  if (FALSE) {
-    ??ape::multiPhylo
-    ?li
-    phylogenies <- ape::rmtree(N = n_trees, n = n_tips)
-    ?ape::rmtree
-    phylogenies
-    plot(phylogenies[1])
-    ??ape::drop.fossil
-    class(phylogenies)
-    class(phylogenies[[1]])
 
-    a <- replicate(N, rtree(n, rooted = rooted, tip.label = tip.label,
-      br = br, ...), simplify = FALSE)
-
-    phylogenies <- TreeSim::sim.bd.age(10, numbsim = n_trees, lambda = 0.5, mu = 0.1, complete = FALSE)
-    phylogenies
-    ?TreeSim::sim.bd.age
-    length(phylogenies)
-
-
-    phylogenies <- lapply(phylogenies, FUN = function(x) { class(x) <- "phylo"; return (x) } )
-    class(phylogenies) <- "multiPhylo"
-    testit::assert(class(phylogenies) == "multiPhylo")
-    testit::assert(class(phylogenies[[1]]) == "phylo")
-    plot(phylogenies[1])
-    testit::assert(is.ultrametric(phylogenies[[1]]))
-    get_average_nltt(phylogenies)
-
-    plot(phylogenies[2])
-    ?rep
+  n_trees <- 100
+  n_tips <- 200
+  set.seed(41)
+  treesim_phylogenies_all <- TreeSim::sim.bd.age(6, numbsim = n_trees, lambda = 0.5, mu = 0.0, complete = FALSE)
+  treesim_phylogenies <- NULL
+  for (p in treesim_phylogenies_all) {
+    if (class(p) == "phylo") {
+      treesim_phylogenies <- c(treesim_phylogenies,list(p))
+    }
   }
-  expect_equal(TRUE, TRUE)
+  timings <- microbenchmark::microbenchmark(
+    get_average_nltt_matrix(treesim_phylogenies, dt = 0.1),
+    get_average_nltt_matrix(treesim_phylogenies, dt = 0.01),
+    times = 2
+  )
+  timings_summary <- summary(timings)
+
+  expect_equal(timings_summary$mean[1] < timings_summary$mean[2], TRUE)
 })
