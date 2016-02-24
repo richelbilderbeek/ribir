@@ -25,4 +25,5 @@ test_that("get_average_nltt: check data types", {
   combined_phylogenies <- c(ape::rcoal(10),ape::rcoal(20))
   get_average_nltt(combined_phylogenies)
 
+  expect_equal(TRUE,TRUE)
 })

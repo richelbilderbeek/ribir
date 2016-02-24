@@ -7,7 +7,7 @@
 get_average_nltt_matrix(phylogenies, dt = 0.001)
 }
 \arguments{
-\item{phylogenies}{the phylogenies, where the phylogenies are of type 'phylo'}
+\item{phylogenies}{the phylogenies, supplied as either a list or a multiPhylo object, where the phylogenies are of type 'phylo'}
 
 \item{dt}{The timestep resolution, where 1/dt is the number of points evaluated}
 }

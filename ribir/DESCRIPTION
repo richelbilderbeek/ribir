@@ -1,12 +1,13 @@
 Package: ribir
 Imports:
     ape (>= 3.4),
-    nLTT (>= 1.1),
     testit (>= 0.5)
 Suggests:
-    testthat,
     knitr,
-    rmarkdown
+    nLTT (>= 1.1),
+    rmarkdown,
+    testthat,
+    TreeSim (>= 2.2)
 Title: My personal R package
 Version: 0.0.0.9000
 Authors@R: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"))

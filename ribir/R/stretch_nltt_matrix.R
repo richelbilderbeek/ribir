@@ -36,7 +36,7 @@ stretch_nltt_matrix <- function(
   }
   if (step_type != "lower" && step_type != "upper") {
     stop("stretch_nltt_matrix: step_type must be either 'lower' or 'upper', ",
-      "step_size supplied was '",step_size,"' instead")
+      "step_type supplied was '",step_type,"' instead")
   }
 
   # Remove rows with same t's, take the first

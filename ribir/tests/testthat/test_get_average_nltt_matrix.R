@@ -127,7 +127,7 @@ test_that("get_average_nltt_matrix: data types", {
   #plot(p)
   expect_equal(ncol(p),2)
   expect_equal(nrow(p),1001)
-
+  expect_equal(TRUE,TRUE)
 })
 
 test_that("get_average_nltt_matrix: speed comparison", {
