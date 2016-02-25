@@ -163,6 +163,7 @@ test_that("get_average_nltt_matrix: speed comparison", {
   # to get_average_nltt_matrix_impl_1,
   # but it is called with lower dt, making it slower
   timings <- microbenchmark::microbenchmark(
+
     ribir::get_average_nltt_matrix_impl_1(treesim_phylogenies, dt = 0.1),
     ribir::get_average_nltt_matrix_impl_2(treesim_phylogenies, dt = 0.01),
     times = 2
