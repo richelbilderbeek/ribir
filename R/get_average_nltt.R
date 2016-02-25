@@ -9,8 +9,8 @@
 #' @param ... Plotting options
 #' @return Nothing
 #' @examples
-#'   get_average_nltt(c(ape::rcoal(10),ape::rcoal(10)))
-#'   get_average_nltt(c(ape::rcoal(10),ape::rcoal(20)), dt = 0.1)
+#'   get_average_nltt(c(ape::rcoal(10), ape::rcoal(10)))
+#'   get_average_nltt(c(ape::rcoal(10), ape::rcoal(20)), dt = 0.1)
 #'
 #' @export
 get_average_nltt <- function(
@@ -23,17 +23,24 @@ get_average_nltt <- function(
   ...
 ) {
   if (class(phylogenies) != "multiPhylo" && class(phylogenies) != "list") {
-    stop("get_average_nltt_matrix: phylogenies must be of class 'multiPhylo' or 'list', used '",class(phylogenies),"' instead")
+    stop("get_average_nltt_matrix: ",
+      "phylogenies must be of class 'multiPhylo' or 'list', ",
+      "used '", class(phylogenies), "' instead")
   }
   if (length(phylogenies) < 1) {
-    stop("get_average_nltt_matrix: there must be at least one phylogeny supplied")
+    stop("get_average_nltt_matrix: ",
+      "there must be at least one phylogeny supplied")
   }
   if (!inherits(phylogenies[[1]], "phylo")) {
     # Stop imposed by ape::ltt.plot.coords
-    stop("get_average_nltt_matrix: phylogenies must be of type phylo, instead of '",class(phylogenies[[1]]),"'")
+    stop("get_average_nltt_matrix: ",
+      "phylogenies must be of type phylo, ",
+      "instead of '", class(phylogenies[[1]]), "'")
   }
   if (dt <= 0.0 || dt >= 1.0) {
-    stop("get_average_nltt: dt must be between (not including) zero and one, dt was ",dt," instead")
+    stop("get_average_nltt: ",
+      "dt must be between (not including) zero and one, ",
+      "dt was ", dt, " instead")
   }
 
 
@@ -48,8 +55,8 @@ get_average_nltt <- function(
       xaxs = "r",
       yaxs = "r",
       type = "S",
-      xlim=c(0,1),
-      ylim=c(0,1),
+      xlim=c(0, 1),
+      ylim=c(0, 1),
       ...
     )
   }
@@ -57,18 +64,17 @@ get_average_nltt <- function(
   # Draw the nLTTS plots used
   if (plot_nltts == TRUE) {
     # Copied
-    sz <- length(phylogenies)
 
     nltts <- NULL
     for (phylogeny in phylogenies) {
-      nltts <- c(nltts,list(get_phylogeny_nltt_matrix(phylogeny)))
+      nltts <- c(nltts, list(get_phylogeny_nltt_matrix(phylogeny)))
     }
     testit::assert(length(nltts) == length(phylogenies))
 
     stretch_matrices <- NULL
     for (nltt in nltts) {
-      stretch_matrix <- stretch_nltt_matrix(nltt,dt = dt, step_type = "upper")
-      stretch_matrices <- c(stretch_matrices,list(stretch_matrix))
+      stretch_matrix <- stretch_nltt_matrix(nltt, dt = dt, step_type = "upper")
+      stretch_matrices <- c(stretch_matrices, list(stretch_matrix))
     }
     testit::assert(length(stretch_matrices) == length(nltts))
     # End of copy
@@ -80,8 +86,8 @@ get_average_nltt <- function(
         yaxs = "r",
         type = "S",
         col="grey",
-        xlim=c(0,1),
-        ylim=c(0,1)
+        xlim=c(0, 1),
+        ylim=c(0, 1)
       )
     }
   }
@@ -92,8 +98,8 @@ get_average_nltt <- function(
     xaxs = "r",
     yaxs = "r",
     type = "S",
-    xlim=c(0,1),
-    ylim=c(0,1),
+    xlim=c(0, 1),
+    ylim=c(0, 1),
     ...
   )
 }

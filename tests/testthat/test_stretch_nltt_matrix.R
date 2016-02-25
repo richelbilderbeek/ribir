@@ -3,24 +3,24 @@ test_that("stretch_nltt_matrix #1", {
   # 0.0 0.5    0.0 0.5
   #         -> 0.5 0.5
   # 1.0 1.0    1.0 1.0
-  m <- matrix( c(c(0.0,1.0), c(0.5,1.0)), ncol = 2, nrow = 2)
-  colnames(m) <- c("t","N")
+  m <- matrix(c(c(0.0, 1.0), c(0.5, 1.0)), ncol = 2, nrow = 2)
+  colnames(m) <- c("t", "N")
   expected <- matrix(
     c(
-      seq(0.0,1.0,0.5),
-      c(0.5,0.5,1.0)
+      seq(0.0, 1.0, 0.5),
+      c(0.5, 0.5, 1.0)
     ),
     ncol = 2, nrow = 3
   )
-  result <- stretch_nltt_matrix(m = m, dt = 1.0/2, step_type = "lower")
-  if (!identical(result,expected)) {
+  result <- stretch_nltt_matrix(m = m, dt = 0.5, step_type = "lower")
+  if (!identical(result, expected)) {
     print("ERROR")
     print("result:")
     print(result)
     print("expected:")
     print(expected)
   }
-  expect_equal(identical(result,expected), TRUE)
+  expect_equal(identical(result, expected), TRUE)
 })
 
 test_that("stretch_nltt_matrix #2", {
@@ -30,24 +30,24 @@ test_that("stretch_nltt_matrix #2", {
   #            0.50 0.5
   #         -> 0.75 0.5
   # 1.0 1.0    1.00 1.0
-  m <- matrix( c(c(0.0,0.4,1.0), c(0.3,0.5,1.0)), ncol = 2, nrow = 3)
-  colnames(m) <- c("t","N")
+  m <- matrix(c(c(0.0, 0.4, 1.0), c(0.3, 0.5, 1.0)), ncol = 2, nrow = 3)
+  colnames(m) <- c("t", "N")
   expected <- matrix(
     c(
-      seq(0.0,1.0,0.25),
-      c(0.3,0.3,0.5,0.5,1.0)
+      seq(0.0, 1.0, 0.25),
+      c(0.3, 0.3, 0.5, 0.5, 1.0)
     ),
     ncol = 2, nrow = 5
   )
   result <- stretch_nltt_matrix(m = m, dt = 0.25, step_type = "lower")
-  if (!identical(result,expected)) {
+  if (!identical(result, expected)) {
     print("ERROR")
     print("result:")
     print(result)
     print("expected:")
     print(expected)
   }
-  expect_equal(identical(result,expected), TRUE)
+  expect_equal(identical(result, expected), TRUE)
 })
 
 
@@ -65,23 +65,23 @@ test_that("stretch_nltt_matrix from vignette, ", {
   newick <- "((A:1,B:1):1,(C:1,D:1):1);"
   phylogeny <- ape::read.tree(text = newick)
   nltt <- ribir::get_phylogeny_nltt_matrix(phylogeny)
-  result <- stretch_nltt_matrix(nltt,dt = 0.25, step_type = "upper")
+  result <- stretch_nltt_matrix(nltt, dt = 0.25, step_type = "upper")
 
   expected <- matrix(
     c(
-      c(0.00,0.25,0.50,0.75,1.00),
-      c(0.50,0.50,1.00,1.00,1.00)
+      c(0.00, 0.25, 0.50, 0.75, 1.00),
+      c(0.50, 0.50, 1.00, 1.00, 1.00)
     ),
     ncol = 2, nrow = 5
   )
-  if (!identical(result,expected)) {
+  if (!identical(result, expected)) {
     print("ERROR")
     print("result:")
     print(result)
     print("expected:")
     print(expected)
   }
-  expect_equal(identical(result,expected), TRUE)
+  expect_equal(identical(result, expected), TRUE)
 })
 
 
@@ -110,21 +110,21 @@ test_that("stretch_nltt_matrix #3", {
   # 0.9 0.5
   # 1.0 1.0
 
-  test <- matrix( c(c(0.0,0.4,1.0), c(0.2,0.5,1.0)), ncol = 2, nrow = 3)
-  colnames(test) <- c("t","N")
+  test <- matrix(c(c(0.0, 0.4, 1.0), c(0.2, 0.5, 1.0)), ncol = 2, nrow = 3)
+  colnames(test) <- c("t", "N")
   expected <- matrix(
     c(
-      seq(0.0,1.0,0.1),
-      rep(0.2,times = 4),rep(0.5, times = 6), 1.0),
+      seq(0.0, 1.0, 0.1),
+      rep(0.2, times = 4), rep(0.5, times = 6), 1.0),
       ncol = 2, nrow = 11
   )
   result <- stretch_nltt_matrix(m = test, dt = 0.1, step_type = "lower")
-  if (!identical(result,expected)) {
+  if (!identical(result, expected)) {
     print("ERROR")
     print("result:")
     print(result)
     print("expected:")
     print(expected)
   }
-  expect_equal(identical(result,expected), TRUE)
+  expect_equal(identical(result, expected), TRUE)
 })

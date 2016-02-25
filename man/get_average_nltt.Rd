@@ -30,8 +30,8 @@ Nothing
 Get the average nLTT from a collection of phylogenies
 }
 \examples{
-  get_average_nltt(c(ape::rcoal(10),ape::rcoal(10)))
-  get_average_nltt(c(ape::rcoal(10),ape::rcoal(20)), dt = 0.1)
+  get_average_nltt(c(ape::rcoal(10), ape::rcoal(10)))
+  get_average_nltt(c(ape::rcoal(10), ape::rcoal(20)), dt = 0.1)
 
 }
 

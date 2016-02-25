@@ -1,11 +1,11 @@
 test_that("get_phylogeny_nltt_matrix #1", {
 
   #
-  #         +-------- A
+  #         /-------- A
   #  +------+
-  #  +      +-------- B
+  # =+      +-------- B
   #  |
-  #  +--------------- C
+  #  \--------------- C
   #
   # +-------********X
   # |       *       |
@@ -23,12 +23,11 @@ test_that("get_phylogeny_nltt_matrix #1", {
   # [3,]  1.0 1.0000000
   newick <- "((A:1,B:1):1,C:2);"
   phylogeny <- ape::read.tree(text = newick)
-  #plot(phylogeny)
-  #nLTT.plot(phylogeny)
   result <- ribir::get_phylogeny_nltt_matrix(phylogeny)
-  expected <- matrix(c(seq(0.0,1.0,0.5),seq(1/3,1.0,1/3)), ncol = 2, nrow = 3)
-  colnames(expected) <- c("time","N")
-  expect_equal(identical(result,expected), TRUE)
+  expected <- matrix(c(seq(0.0, 1.0, 0.5),
+    seq(1 / 3, 1.0, 1 / 3)), ncol = 2, nrow = 3)
+  colnames(expected) <- c("time", "N")
+  expect_equal(identical(result, expected), TRUE)
 })
 
 
@@ -36,13 +35,13 @@ test_that("get_phylogeny_nltt_matrix #2", {
   library(testit)
 
   #
-  #         +-------- A
+  #         /-------- A
   #  +------+
   #  |      +-------- B
   #  +
   #  |      +-------- C
   #  +------+
-  #         +-------- D
+  #         \-------- D
   #
   # +-------********X
   # |       *       |
@@ -64,17 +63,16 @@ test_that("get_phylogeny_nltt_matrix #2", {
 
   newick <- "((A:1,B:1):1,(C:1,D:1):1);"
   phylogeny <- ape::read.tree(text = newick)
-  #plot(phylogeny)
-  #nLTT.plot(phylogeny)
   result <- ribir::get_phylogeny_nltt_matrix(phylogeny)
-  expected <- matrix(c(c(0.0,0.5,0.5,1.0),c(0.25,0.5,0.75,1.0)), ncol = 2, nrow = 4)
-  colnames(expected) <- c("time","N")
-  if (!identical(result,expected)) {
+  expected <- matrix(c(c(0.0, 0.5, 0.5, 1.0),
+    c(0.25, 0.5, 0.75, 1.0)), ncol = 2, nrow = 4)
+  colnames(expected) <- c("time", "N")
+  if (!identical(result, expected)) {
     print("ERROR")
     print("expected:")
     print(expected)
     print("result:")
     print(result)
   }
-  expect_equal(identical(result,expected), TRUE)
+  expect_equal(identical(result, expected), TRUE)
 })

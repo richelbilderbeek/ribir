@@ -45,7 +45,7 @@ add.scale.bar()
 This can be observed in the nLTT plot:
 
 ```{r}
-nLTT.plot(phylogeny1, ylim = c(0,1))
+nLTT.plot(phylogeny1, ylim = c(0, 1))
 ```
 
 As a collection of timepoints:
@@ -64,7 +64,7 @@ add.scale.bar()
 Also this can be observed in the nLTT plot:
 
 ```{r}
-nLTT.plot(phylogeny2, ylim = c(0,1))
+nLTT.plot(phylogeny2, ylim = c(0, 1))
 ```
 
 As a collection of timepoints:
@@ -93,7 +93,7 @@ ribir::stretch_nltt_matrix(ribir::get_phylogeny_nltt_matrix(phylogeny2), dt = 0.
 Here is the average nLTT matrix of both phylogenies:
 
 ```{r}
-ribir::get_average_nltt_matrix(c(phylogeny1,phylogeny2), dt = 0.20)
+ribir::get_average_nltt_matrix(c(phylogeny1, phylogeny2), dt = 0.20)
 ```
 
 Observe how the numbers get averaged.
@@ -101,7 +101,7 @@ Observe how the numbers get averaged.
 The same, now shown as a plot:
 
 ```{r}
-ribir::get_average_nltt(c(phylogeny1,phylogeny2), dt = 0.20, plot_nltts = TRUE)
+ribir::get_average_nltt(c(phylogeny1, phylogeny2), dt = 0.20, plot_nltts = TRUE)
 ```
 
 
@@ -126,7 +126,7 @@ add.scale.bar()
 This can be observed in the nLTT plot:
 
 ```{r}
-nLTT.plot(phylogeny1, ylim = c(0,1))
+nLTT.plot(phylogeny1, ylim = c(0, 1))
 ```
 
 As a collection of timepoints:
@@ -145,7 +145,7 @@ add.scale.bar()
 Also this can be observed in the nLTT plot:
 
 ```{r}
-nLTT.plot(phylogeny2, ylim = c(0,1))
+nLTT.plot(phylogeny2, ylim = c(0, 1))
 ```
 
 As a collection of timepoints:
@@ -174,7 +174,7 @@ ribir::stretch_nltt_matrix(ribir::get_phylogeny_nltt_matrix(phylogeny2), dt = 0.
 Here is the average nLTT matrix of both phylogenies:
 
 ```{r}
-ribir::get_average_nltt_matrix(c(phylogeny1,phylogeny2), dt = 0.20)
+ribir::get_average_nltt_matrix(c(phylogeny1, phylogeny2), dt = 0.20)
 ```
 
 Observe how the numbers get averaged.
@@ -182,5 +182,5 @@ Observe how the numbers get averaged.
 The same, now shown as a plot:
 
 ```{r}
-ribir::get_average_nltt(c(phylogeny1,phylogeny2), dt = 0.20, plot_nltts = TRUE)
+ribir::get_average_nltt(c(phylogeny1, phylogeny2), dt = 0.20, plot_nltts = TRUE)
 ```

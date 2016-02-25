@@ -53,14 +53,14 @@ The timepoints are plotted in red over the nLTT plot:
 
 ```{r}
 nLTT.plot(phylogeny)
-points(nltt, pch = 19,col="red")
+points(nltt, pch = 19, col="red")
 ```
 
 The function `stretch_nltt_matrix` inserts timepoints, as shown in this table:
 
 ```{r}
 nltt <- ribir::get_phylogeny_nltt_matrix(phylogeny)
-stretch_matrix <- ribir::stretch_nltt_matrix(nltt,dt = 0.25, step_type = "upper")
+stretch_matrix <- ribir::stretch_nltt_matrix(nltt, dt = 0.25, step_type = "upper")
 print(stretch_matrix)
 ```
 
@@ -68,8 +68,8 @@ Plotting these as blue points between the red points:
 
 ```{r}
 nLTT.plot(phylogeny)
-points(nltt, pch = 19,col="red")
-points(stretch_matrix, pch = 19,col="blue")
+points(nltt, pch = 19, col="red")
+points(stretch_matrix, pch = 19, col="blue")
 ```
 
 A good result is when all blue points fall on the line.
@@ -104,14 +104,14 @@ in red over the nLTT plot:
 
 ```{r}
 nLTT.plot(phylogeny)
-points(nltt, pch = 19,col="red")
+points(nltt, pch = 19, col="red")
 ```
 
 The function `stretch_nltt_matrix` inserts timepoints, as shown in this table:
 
 ```{r}
 nltt <- ribir::get_phylogeny_nltt_matrix(phylogeny)
-stretch_matrix <- ribir::stretch_nltt_matrix(nltt,dt = 0.25, step_type = "upper")
+stretch_matrix <- ribir::stretch_nltt_matrix(nltt, dt = 0.25, step_type = "upper")
 print(stretch_matrix)
 ```
 
@@ -120,8 +120,8 @@ Plotting these as blue points between the red points:
 
 ```{r}
 nLTT.plot(phylogeny)
-points(nltt, pch = 19,col="red")
-points(stretch_matrix, pch = 19,col="blue")
+points(nltt, pch = 19, col="red")
+points(stretch_matrix, pch = 19, col="blue")
 ```
 
 A good result is when all blue points fall on the line.
@@ -157,7 +157,7 @@ in red over the nLTT plot:
 
 ```{r}
 nLTT.plot(phylogeny)
-points(nltt, pch = 19,col="red")
+points(nltt, pch = 19, col="red")
 ```
 
 The function `stretch_nltt_matrix` inserts blue points between these
@@ -166,9 +166,9 @@ red points:
 ```{r}
 nltt <- ribir::get_phylogeny_nltt_matrix(phylogeny)
 nLTT.plot(phylogeny)
-stretch_matrix <- ribir::stretch_nltt_matrix(nltt,dt = 0.05, step_type = "upper")
-points(nltt, pch = 19,col="red")
-points(stretch_matrix, pch = 19,col="blue")
+stretch_matrix <- ribir::stretch_nltt_matrix(nltt, dt = 0.05, step_type = "upper")
+points(nltt, pch = 19, col="red")
+points(stretch_matrix, pch = 19, col="blue")
 ```
 
 A good result is when all blue points fall on the line.

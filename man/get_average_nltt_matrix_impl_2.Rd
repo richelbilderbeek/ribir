@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_average_nltt_matrix.R
 \name{get_average_nltt_matrix_impl_2}
 \alias{get_average_nltt_matrix_impl_2}
-\title{Second implementation of get_average_nltt_matrix}
+\title{Internal function. Second implementation of get_average_nltt_matrix. A stub now.}
 \usage{
 get_average_nltt_matrix_impl_2(phylogenies, dt)
 }
@@ -15,6 +15,6 @@ get_average_nltt_matrix_impl_2(phylogenies, dt)
 A matrix of timepoints with the average number of (normalized) lineages through (normalized) time
 }
 \description{
-Second implementation of get_average_nltt_matrix
+Internal function. Second implementation of get_average_nltt_matrix. A stub now.
 }
 

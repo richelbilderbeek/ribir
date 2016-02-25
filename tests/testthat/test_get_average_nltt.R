@@ -1,10 +1,12 @@
 test_that("get_average_nltt: create some plots", {
   # The inner workings of get_average_nltt are done by get_average_nltt_matrix
   newick1 <- "((A:1,B:1):1,(C:1,D:1):1);"
-  newick2 <- "((((XD:1,ZD:1):1,CE:2):1,(FE:2,EE:2):1):4,((AE:1,BE:1):1,(WD:1,YD:1):1):5);"
+  newick2 <- paste("((((XD:1,ZD:1):1,CE:2):1,(FE:2,EE:2):1):4,",
+    "((AE:1,BE:1):1,(WD:1,YD:1):1):5);", sep="")
   phylogeny1 <- ape::read.tree(text = newick1)
   phylogeny2 <- ape::read.tree(text = newick2)
-  ribir::get_average_nltt(c(phylogeny1,phylogeny2), dt = 0.20, plot_nltts = TRUE)
+  ribir::get_average_nltt(c(phylogeny1, phylogeny2),
+    dt = 0.20, plot_nltts = TRUE)
 })
 
 test_that("get_average_nltt: check data types", {
@@ -18,12 +20,13 @@ test_that("get_average_nltt: check data types", {
   get_average_nltt(ape_phylogenies)
 
   set.seed(41)
-  treesim_phylogenies <- TreeSim::sim.bd.age(6, numbsim = n_trees, lambda = 0.4, mu = 0.0, complete = FALSE)
+  treesim_phylogenies <- TreeSim::sim.bd.age(
+    6, numbsim = n_trees, lambda = 0.4, mu = 0.0, complete = FALSE)
   get_average_nltt(treesim_phylogenies)
 
   set.seed(41)
-  combined_phylogenies <- c(ape::rcoal(10),ape::rcoal(20))
+  combined_phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
   get_average_nltt(combined_phylogenies)
 
-  expect_equal(TRUE,TRUE)
+  expect_equal(TRUE, TRUE)
 })
