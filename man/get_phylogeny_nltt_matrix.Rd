@@ -6,6 +6,9 @@
 \usage{
 get_phylogeny_nltt_matrix(phylogeny)
 }
+\arguments{
+\item{phylogeny}{A phylogeny of type phylo}
+}
 \value{
 a matrix
 }

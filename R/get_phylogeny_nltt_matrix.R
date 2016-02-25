@@ -1,6 +1,7 @@
 #' Extract the nLTT matrix from a phylogeny
 #'
 
+#' @param phylogeny A phylogeny of type phylo
 #' @return a matrix
 #'
 #' @export

@@ -15,7 +15,7 @@ Authors@R: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", 
 Description: This is my personal R package, that is a collection of my personal code snippets.
 Depends:
     R (>= 3.2.3)
-License: GPL-3
+License: file LICENSE
 LazyData: true
 RoxygenNote: 5.0.1
 VignetteBuilder: knitr
