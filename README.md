@@ -2,7 +2,11 @@
 
 My personal R package.
 
-This package tries to follow all [R-CodingStandard](https://github.com/richelbilderbeek/R-CodingStandard) guidelines.
+This package 
+ * tries to follow all [R-CodingStandard](https://github.com/richelbilderbeek/R-CodingStandard) guidelines
+ * can be built without warnings and/or notes
+ * will not trigger any warning by `lintr`
+
 
 ## I want to collaborate
 
@@ -11,7 +15,10 @@ Great! These are your options:
  * Add an Issue
  * Submit a Pull Request
 
-Pull Requests should follow the [R-CodingStandard](https://github.com/richelbilderbeek/R-CodingStandard) guidelines.
+Pull Requests should
+ * try to follow the [R-CodingStandard](https://github.com/richelbilderbeek/R-CodingStandard) guidelines
+ * keep the package to be built without warnings and/or notes
+ * not trigger any warning by `lintr`
 
 ## I think I have found a bug
 
@@ -20,7 +27,10 @@ Awesome! These are your options:
  * Add an Issue, with the test that fails
  * Submit a Pull Request, where the test is added to the `tests/testthat` folder
 
-Pull Requests should follow the [R-CodingStandard](https://github.com/richelbilderbeek/R-CodingStandard) guidelines.
+Pull Requests should
+ * try to follow the [R-CodingStandard](https://github.com/richelbilderbeek/R-CodingStandard) guidelines
+ * keep the package to be built without warnings and/or notes
+ * not trigger any warning by `lintr`
 
 ## There's something else I want to say
 
