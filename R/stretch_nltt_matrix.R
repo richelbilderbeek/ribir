@@ -2,7 +2,7 @@
 #'
 #' @param m A matrix of 2 columns and at least 2 rows
 #' @param dt The resultion, a value e <0,1]
-#' @param step_type can be 'lower' or 'upper
+#' @param step_type can be 'lower' or 'upper'
 #' @return The stretched matrix
 #' @examples
 #'   m <- matrix( c(c(0.0, 1.0), c(0.5, 1.0)), ncol = 2, nrow = 2)
