@@ -11,7 +11,7 @@ stretch_nltt_matrix(m, dt, step_type)
 
 \item{dt}{The resultion, a value e <0,1]}
 
-\item{step_type}{can be 'lower' or 'upper}
+\item{step_type}{can be 'lower' or 'upper'}
 }
 \value{
 The stretched matrix
@@ -28,7 +28,7 @@ Stretch matrix 'm' with a timestep resolution of 'dt'
     ),
     ncol = 2, nrow = 3
   )
-  result <- stretch_nltt_matrix(m = m, dt = 0.5, step_type = "lower") * 2
+  result <- stretch_nltt_matrix(m = m, dt = 0.5, step_type = "lower")
   testit::assert(identical(result, expected))
 
 }
