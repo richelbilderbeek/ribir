@@ -3,8 +3,9 @@ Imports:
     ape (>= 3.4),
     testit (>= 0.5)
 Suggests:
+    devtools (>= 1.10.0),
     knitr (>= 1.12),
-    lintr (>= 0.3),
+    lintr (>= 0.3.3),
     nLTT (>= 1.1),
     rmarkdown (>= 0.9),
     testthat (>= 0.11),
