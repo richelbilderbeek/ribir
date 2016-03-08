@@ -145,7 +145,7 @@ test_that("get_average_nltt_matrix: data types", {
 })
 
 test_that("get_average_nltt_matrix: speed comparison", {
-  skip_on_cran()
+  skip("Write a decent alternative first :-)")
 
   n_trees <- 100
   n_tips <- 200
