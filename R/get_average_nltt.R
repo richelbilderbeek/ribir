@@ -55,8 +55,8 @@ get_average_nltt <- function(
       xaxs = "r",
       yaxs = "r",
       type = "S",
-      xlim=c(0, 1),
-      ylim=c(0, 1),
+      xlim = c(0, 1),
+      ylim = c(0, 1),
       ...
     )
   }
@@ -86,8 +86,8 @@ get_average_nltt <- function(
         yaxs = "r",
         type = "S",
         col="grey",
-        xlim=c(0, 1),
-        ylim=c(0, 1)
+        xlim = c(0, 1),
+        ylim = c(0, 1)
       )
     }
   }
@@ -98,8 +98,8 @@ get_average_nltt <- function(
     xaxs = "r",
     yaxs = "r",
     type = "S",
-    xlim=c(0, 1),
-    ylim=c(0, 1),
+    xlim = c(0, 1),
+    ylim = c(0, 1),
     ...
   )
 }

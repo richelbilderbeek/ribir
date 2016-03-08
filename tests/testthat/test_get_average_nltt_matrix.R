@@ -70,7 +70,7 @@ test_that(paste("get_average_nltt_matrix: ",
 
   newick1 <- "((A:1,B:1):1,(C:1,D:1):1);"
   newick2 <- paste("((((XD:1,ZD:1):1,CE:2):1,(FE:2,EE:2):1):4,",
-    "((AE:1,BE:1):1,(WD:1,YD:1):1):5);", sep="")
+    "((AE:1,BE:1):1,(WD:1,YD:1):1):5);", sep = "")
   phylogeny1 <- ape::read.tree(text = newick1)
   phylogeny2 <- ape::read.tree(text = newick2)
 
