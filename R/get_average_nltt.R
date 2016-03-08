@@ -73,7 +73,9 @@ get_average_nltt <- function(
 
     stretch_matrices <- NULL
     for (nltt in nltts) {
-      stretch_matrix <- ribir::stretch_nltt_matrix(nltt, dt = dt, step_type = "upper")
+      stretch_matrix <- ribir::stretch_nltt_matrix(
+        nltt, dt = dt, step_type = "upper"
+      )
       stretch_matrices <- c(stretch_matrices, list(stretch_matrix))
     }
     testit::assert(length(stretch_matrices) == length(nltts))
