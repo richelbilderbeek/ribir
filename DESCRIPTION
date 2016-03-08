@@ -4,6 +4,7 @@ Imports:
     testit (>= 0.5)
 Suggests:
     knitr (>= 1.12),
+    lintr (>= 0.3),
     nLTT (>= 1.1),
     rmarkdown (>= 0.9),
     testthat (>= 0.11),
