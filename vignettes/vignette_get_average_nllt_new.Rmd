@@ -1,10 +1,10 @@
 ---
-title: "How to get the average nLTT plot"
+title: "How to get the average nLTT plot,  new"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{How to get the average nLTT plot}
+  %\VignetteIndexEntry{How to get the average nLTT plot, new}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,6 +21,7 @@ For all examples, the following R code must be run:
 ```{r}
 library(ape)
 library(nLTT)
+library(ggplot2)
 library(testit)
 ```
 
@@ -54,6 +55,14 @@ As a collection of timepoints:
 ribir::get_phylogeny_nltt_matrix(phylogeny1)
 ```
 
+Plotting those timepoints:
+
+```{r}
+df <- as.data.frame(ribir::get_phylogeny_nltt_matrix(phylogeny1))
+qplot(time, N, data = df, geom = "step", ylim = c(0,1), direction = "vh", main = "NLTT plot of phylogeny 1")
+```
+
+
 `phylogeny2` has longer tips:
 
 ```{r}
@@ -71,6 +80,13 @@ As a collection of timepoints:
 
 ```{r}
 ribir::get_phylogeny_nltt_matrix(phylogeny2)
+```
+
+Plotting those timepoints:
+
+```{r}
+df <- as.data.frame(ribir::get_phylogeny_nltt_matrix(phylogeny2))
+qplot(time, N, data = df, geom = "step", ylim = c(0,1), direction = "vh", main = "NLTT plot of phylogeny 2")
 ```
 
 
@@ -102,6 +118,32 @@ The same, now shown as a plot:
 
 ```{r}
 ribir::get_average_nltt(c(phylogeny1, phylogeny2), dt = 0.20, plot_nltts = TRUE)
+```
+
+```{r}
+df <- as.data.frame(ribir::get_average_nltt_matrix_impl_3(c(phylogeny1,phylogeny2), dt = 0.01))
+names(df) <- c("time","N")
+
+# Bad smoother, but does look nice
+qplot(time, N, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies") + geom_smooth(span = 0.1)
+
+# Shows the mean as intended, without confidence interval
+qplot(time, N, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
+  stat_summary(fun.y=mean, geom = "line")
+
+# Shows mean and confidence interval as crosshair per point
+qplot(time, N, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
+  stat_summary(fun.data = "mean_cl_boot", color = "red")
+
+# GOOD: also shows original lines
+qplot(time, N, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
+  stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
+
+# GOOD: omits original lines
+qplot(time, N, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
+  stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
+
+
 ```
 
 

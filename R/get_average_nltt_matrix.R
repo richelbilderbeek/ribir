@@ -83,3 +83,49 @@ get_average_nltt_matrix_impl_2 <- function(phylogenies, dt) {
   )
   xy
 }
+
+
+#' New function that gives tidy data
+#'
+#' @param phylogenies the phylogenies, supplied as either a list or a multiPhylo object, where the phylogenies are of type 'phylo'
+#' @param dt The timestep resolution, where 1/dt is the number of points evaluated
+#' @return A matrix of timepoints with the average number of (normalized) lineages through (normalized) time
+#'
+#' @export
+get_average_nltt_matrix_impl_3 <- function(phylogenies, dt) {
+  if (length(phylogenies) < 1) {
+    stop("get_average_nltt_matrix: ",
+         "there must be at least one phylogeny supplied")
+  }
+  if (class(phylogenies) != "multiPhylo" && class(phylogenies) != "list") {
+    stop("get_average_nltt_matrix: ",
+         "phylogenies must be of class 'multiPhylo' or 'list', ",
+         "used '", class(phylogenies), "' instead")
+  }
+  if (!inherits(phylogenies[[1]], "phylo")) {
+    # Stop imposed by ape::ltt.plot.coords
+    stop("get_average_nltt_matrix: ",
+         "phylogenies must be of type phylo, ",
+         "instead of '", class(phylogenies[[1]]), "'")
+  }
+  if (dt <= 0.0 || dt >= 1.0) {
+    stop("get_average_nltt_matrix: ",
+         "dt must be between (not including) zero and one, ",
+         "dt was ", dt, " instead")
+  }
+
+  nltts <- NULL
+  for (phylogeny in phylogenies) {
+    nltts <- c(nltts, list(ribir::get_phylogeny_nltt_matrix(phylogeny)))
+  }
+  testit::assert(length(nltts) == length(phylogenies))
+
+  stretch_matrices <- NULL
+  for (nltt in nltts) {
+    stretch_matrix <- ribir::stretch_nltt_matrix(
+      nltt, dt = dt, step_type = "upper"
+    )
+    stretch_matrices <- rbind(stretch_matrices, stretch_matrix)
+  }
+  stretch_matrices
+}
