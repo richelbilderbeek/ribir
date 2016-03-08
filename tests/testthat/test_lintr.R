@@ -1,6 +1,8 @@
 test_that("Package must pass lintr", {
-
-  lints <- devtools::lint()
-  print(lints)
-  expect_equal(length(lints), 0)
+  if (requireNamespace("lintr", quietly = TRUE)) {
+    context("lints")
+    test_that("Package Style", {
+      lintr::expect_lint_free()
+    })
+  }
 })
