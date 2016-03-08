@@ -28,5 +28,30 @@ test_that("get_average_nltt: check data types", {
   combined_phylogenies <- c(ape::rcoal(10), ape::rcoal(20))
   get_average_nltt(combined_phylogenies)
 
-  expect_equal(TRUE, TRUE)
+
+})
+
+
+
+test_that("get_average_nltt: stop on incorrect input", {
+
+  n_trees <- 2
+  n_tips <- 3
+  set.seed(41)
+  ape_phylogenies <- ape::rmtree(N = n_trees, n = n_tips)
+
+  single_phylogeny <- ape::rmtree(N = 1, n = n_tips)
+
+  #  dt must be from 0.0 to and including 1.0
+  expect_error(get_average_nltt(ape_phylogenies, dt = -0.1))
+  expect_error(get_average_nltt(ape_phylogenies, dt = 1.1))
+
+  # must supply at least two trees
+  expect_error(get_average_nltt(single_phylogeny))
+
+  # must supply a phylogeny
+  expect_error(get_average_nltt(c(1, 2, 3)))
+
+  # must supply only phylogenies
+  expect_error(get_average_nltt(list(c(1, 2), single_phylogeny)))
 })
