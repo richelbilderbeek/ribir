@@ -85,7 +85,7 @@ get_average_nltt <- function(
         xaxs = "r",
         yaxs = "r",
         type = "S",
-        col="grey",
+        col = "grey",
         xlim = c(0, 1),
         ylim = c(0, 1)
       )
