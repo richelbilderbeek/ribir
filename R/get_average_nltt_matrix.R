@@ -23,14 +23,14 @@ get_average_nltt_matrix <- function(
 #'
 #' @export
 get_average_nltt_matrix_impl_1 <- function(phylogenies, dt) {
+  if (length(phylogenies) < 1) {
+    stop("get_average_nltt_matrix: ",
+         "there must be at least one phylogeny supplied")
+  }
   if (class(phylogenies) != "multiPhylo" && class(phylogenies) != "list") {
     stop("get_average_nltt_matrix: ",
       "phylogenies must be of class 'multiPhylo' or 'list', ",
       "used '", class(phylogenies), "' instead")
-  }
-  if (length(phylogenies) < 1) {
-    stop("get_average_nltt_matrix: ",
-      "there must be at least one phylogeny supplied")
   }
   if (!inherits(phylogenies[[1]], "phylo")) {
     # Stop imposed by ape::ltt.plot.coords
