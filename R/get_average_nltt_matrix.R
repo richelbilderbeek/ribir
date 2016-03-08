@@ -10,7 +10,7 @@
 get_average_nltt_matrix <- function(
   phylogenies,
   dt = 0.001) {
-  get_average_nltt_matrix_impl_1(phylogenies = phylogenies, dt = dt)
+  ribir::get_average_nltt_matrix_impl_1(phylogenies = phylogenies, dt = dt)
 }
 
 

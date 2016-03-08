@@ -67,13 +67,13 @@ get_average_nltt <- function(
 
     nltts <- NULL
     for (phylogeny in phylogenies) {
-      nltts <- c(nltts, list(get_phylogeny_nltt_matrix(phylogeny)))
+      nltts <- c(nltts, list(ribir::get_phylogeny_nltt_matrix(phylogeny)))
     }
     testit::assert(length(nltts) == length(phylogenies))
 
     stretch_matrices <- NULL
     for (nltt in nltts) {
-      stretch_matrix <- stretch_nltt_matrix(nltt, dt = dt, step_type = "upper")
+      stretch_matrix <- ribir::stretch_nltt_matrix(nltt, dt = dt, step_type = "upper")
       stretch_matrices <- c(stretch_matrices, list(stretch_matrix))
     }
     testit::assert(length(stretch_matrices) == length(nltts))
