@@ -76,3 +76,16 @@ test_that("get_phylogeny_nltt_matrix #2", {
   }
   expect_equal(identical(result, expected), TRUE)
 })
+
+
+
+
+
+test_that("get_phylogeny_nltt_matrix: stop on incorrect input", {
+
+  # must supply at least something
+  expect_error(get_phylogeny_nltt_matrix(c()))
+
+  # must supply a phylogeny
+  expect_error(get_phylogeny_nltt_matrix(c(1, 2, 3)))
+})

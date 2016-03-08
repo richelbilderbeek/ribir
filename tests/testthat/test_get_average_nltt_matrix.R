@@ -173,3 +173,29 @@ test_that("get_average_nltt_matrix: speed comparison", {
 
   expect_equal(timings_summary$mean[1] < timings_summary$mean[2], TRUE)
 })
+
+
+test_that("get_average_nltt_matrix: stop on incorrect input", {
+
+  n_trees <- 2
+  n_tips <- 3
+  set.seed(41)
+  ape_phylogenies <- ape::rmtree(N = n_trees, n = n_tips)
+  single_phylogeny <- ape::rmtree(N = 1, n = n_tips)
+
+  # must supply at least something
+  expect_error(get_average_nltt_matrix(c()))
+
+  #  dt must be from 0.0 to and including 1.0
+  expect_error(get_average_nltt_matrix(ape_phylogenies, dt = -0.1))
+  expect_error(get_average_nltt_matrix(ape_phylogenies, dt = 1.1))
+
+  # must supply at least two trees
+  expect_error(get_average_nltt_matrix(single_phylogeny))
+
+  # must supply a phylogeny
+  expect_error(get_average_nltt_matrix(c(1, 2, 3)))
+
+  # must supply only phylogenies
+  expect_error(get_average_nltt_matrix(list(c(1, 2), single_phylogeny)))
+})

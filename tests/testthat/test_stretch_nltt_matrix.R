@@ -128,3 +128,39 @@ test_that("stretch_nltt_matrix #3", {
   }
   expect_equal(identical(result, expected), TRUE)
 })
+
+
+
+
+
+
+test_that("get_average_nltt_matrix: stop on incorrect input", {
+  test <- matrix(c(c(0.0, 0.4, 1.0), c(0.2, 0.5, 1.0)), ncol = 2, nrow = 3)
+  colnames(test) <- c("t", "N")
+
+  # must supply a matrx
+  expect_error(
+    stretch_nltt_matrix(m = list(), dt = 0.1, step_type = "upper")
+  )
+
+  # must supply at matrix with two columns
+  expect_error(
+    stretch_nltt_matrix(
+      m = matrix(rep(0.0, times = 9), ncol = 3, nrow = 3),
+      dt = 0.1,
+      step_type = "upper"
+    )
+  )
+
+  # step_type should be either 'upper' or 'lower'
+  expect_silent(
+    stretch_nltt_matrix(m = test, dt = 0.1, step_type = "upper")
+  )
+  expect_silent(
+    stretch_nltt_matrix(m = test, dt = 0.1, step_type = "lower")
+  )
+  expect_error(
+    stretch_nltt_matrix(m = test, dt = 0.1, step_type = "nonsense")
+  )
+
+})

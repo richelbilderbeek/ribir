@@ -42,6 +42,9 @@ test_that("get_average_nltt: stop on incorrect input", {
 
   single_phylogeny <- ape::rmtree(N = 1, n = n_tips)
 
+  # must supply at least something
+  expect_error(get_average_nltt(c()))
+
   #  dt must be from 0.0 to and including 1.0
   expect_error(get_average_nltt(ape_phylogenies, dt = -0.1))
   expect_error(get_average_nltt(ape_phylogenies, dt = 1.1))
