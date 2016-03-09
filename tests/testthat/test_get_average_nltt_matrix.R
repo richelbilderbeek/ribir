@@ -103,7 +103,15 @@ test_that(paste("get_average_nltt_matrix: ",
     rep(2 / 9, 3), 1 / 3, 2 / 3, 1.0), ncol = 2)
   testit::assert(all.equal(nltt_matrix2, expected_nltt_matrix2))
 
-  result <- ribir::get_average_nltt_matrix(c(phylogeny1, phylogeny2), dt = 0.20)
+  # The real tests
+  result <- ribir::get_average_nltt_matrix(
+    c(phylogeny1, phylogeny2), dt = 0.20)
+  result_1 <- ribir::get_average_nltt_matrix_impl_1(
+    c(phylogeny1, phylogeny2), dt = 0.20)
+  result_2 <- ribir::get_average_nltt_matrix_impl_2(
+    c(phylogeny1, phylogeny2), dt = 0.20)
+  result_3 <- ribir::get_average_nltt_matrix_impl_2(
+    c(phylogeny1, phylogeny2), dt = 0.20)
 
   ##      [,1]      [,2]  # nolint
   ## [1,]  0.0 0.3611111  # nolint
@@ -114,7 +122,10 @@ test_that(paste("get_average_nltt_matrix: ",
   ## [6,]  1.0 1.0000000  # nolint
   expected <- matrix(c(seq(0.0, 1.0, 0.2), rep(13 / 36, 3),
     2 / 3, 5 / 6, 1.0), ncol = 2)
-  expect_equal(all.equal(nltt_matrix2, expected_nltt_matrix2), TRUE)
+  expect_equal(all.equal(result, expected), TRUE)
+  expect_equal(all.equal(result_1, expected), TRUE)
+  expect_equal(all.equal(result_2, expected), TRUE)
+  expect_equal(all.equal(result_3, expected), TRUE)
 })
 
 
