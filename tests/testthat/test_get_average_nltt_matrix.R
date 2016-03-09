@@ -102,6 +102,7 @@ test_that(paste("get_average_nltt_matrix: ",
   expected_nltt_matrix2 <- matrix(c(seq(0.0, 1.0, 0.2),
     rep(2 / 9, 3), 1 / 3, 2 / 3, 1.0), ncol = 2)
   testit::assert(all.equal(nltt_matrix2, expected_nltt_matrix2))
+  #phylogenies <- c(phylogeny1, phylogeny2)  # nolint
 
   # The real tests
   result <- ribir::get_average_nltt_matrix(
@@ -109,8 +110,6 @@ test_that(paste("get_average_nltt_matrix: ",
   result_1 <- ribir::get_average_nltt_matrix_impl_1(
     c(phylogeny1, phylogeny2), dt = 0.20)
   result_2 <- ribir::get_average_nltt_matrix_impl_2(
-    c(phylogeny1, phylogeny2), dt = 0.20)
-  result_3 <- ribir::get_average_nltt_matrix_impl_2(
     c(phylogeny1, phylogeny2), dt = 0.20)
 
   ##      [,1]      [,2]  # nolint
@@ -125,9 +124,7 @@ test_that(paste("get_average_nltt_matrix: ",
   expect_equal(all.equal(result, expected), TRUE)
   expect_equal(all.equal(result_1, expected), TRUE)
   expect_equal(all.equal(result_2, expected), TRUE)
-  expect_equal(all.equal(result_3, expected), TRUE)
 })
-
 
 test_that("get_average_nltt_matrix: data types", {
   # Create a list or multiPhylo of phylogenies (of type phylo)

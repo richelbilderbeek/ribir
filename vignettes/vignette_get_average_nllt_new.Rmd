@@ -121,9 +121,9 @@ ribir::get_average_nltt(c(phylogeny1, phylogeny2), dt = 0.20, plot_nltts = TRUE)
 ```
 
 ```{r}
-df <- as.data.frame(ribir::get_average_nltt_matrix_impl_3(c(phylogeny1,phylogeny2), dt = 0.01))
+df <- ribir::get_nltt_values(c(phylogeny1,phylogeny2), dt = 0.01)
 names(df) <- c("time","N")
-
+df
 # Bad smoother, but does look nice
 qplot(time, N, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies") + geom_smooth(span = 0.1)
 
