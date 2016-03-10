@@ -42,8 +42,8 @@ test_that(paste("get_nltt_values: ",
   expect_equal(ncol(result), 3)
 
   expect_equal(is.data.frame(result), TRUE)
-  expect_equal(is.integer(result$ID), TRUE)
-  expect_equal(is.factor(result$ID), FALSE)
+  expect_equal(is.integer(result$id), TRUE)
+  expect_equal(is.factor(result$id), FALSE)
   expect_equal(is.numeric(result$t), TRUE)
   expect_equal(is.numeric(result$nltt), TRUE)
 })
@@ -123,7 +123,7 @@ test_that(paste("get_nltt_values: ",
       ncol = 3, byrow = FALSE
     )
   expected <- as.data.frame(x = m)
-  colnames(expected) <- c("ID", "t", "nltt")
+  colnames(expected) <- c("id", "t", "nltt")
   expected[, 1] <- sapply(expected[, 1], as.integer)
 
   expect_equal(nrow(result), 12)
