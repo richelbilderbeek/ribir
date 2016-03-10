@@ -167,7 +167,7 @@ test_that(paste("get_nltt_values: ",
   ## [6,]  2 1.0 1.0000000  # nolint
   m <- matrix(c(
       rep(1, 6), rep(2, 6),
-      rep(seq(0,1,0.2),2),
+      rep(seq(0, 1, 0.2), 2),
       rep(0.5, 3), rep(1.0, 3), rep(2 / 9, 3), 1 / 3, 2 / 3, 1.0
     ),
     ncol = 3, byrow = FALSE)
