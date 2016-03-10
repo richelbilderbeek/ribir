@@ -4,6 +4,7 @@ Imports:
     testit (>= 0.5)
 Suggests:
     devtools (>= 1.10.0),
+    Hmisc (>= 3.17),
     knitr (>= 1.12),
     ggplot2 (>= 2.1.0),
     lintr (>= 0.3.3),
