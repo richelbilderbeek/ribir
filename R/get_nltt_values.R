@@ -47,7 +47,7 @@ get_nltt_values <- function(phylogenies, dt) {
     testit::assert(row_to_index >= 1)
     testit::assert(row_to_index <= n_rows)
     m[row_from_index:row_to_index, 1] <- i # Recycling
-    m[row_from_index:row_to_index, 2] <- seq(0,1,dt)
+    m[row_from_index:row_to_index, 2] <- seq(0, 1, dt)
     m[row_from_index:row_to_index, 3] <- new_col[, 2, drop = FALSE]
   }
   z <- as.data.frame(x = m)
