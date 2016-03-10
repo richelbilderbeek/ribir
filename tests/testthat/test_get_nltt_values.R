@@ -1,5 +1,32 @@
 test_that(paste("get_nltt_values: ",
-  "data types", sep = ""), {
+  "input data type", sep = ""), {
+
+  n_trees <- 2
+  n_tips <- 3
+  set.seed(41)
+  ape_phylogenies <- ape::rmtree(N = n_trees, n = n_tips)
+  single_phylogeny <- ape::rmtree(N = 1, n = n_tips)
+
+  # must supply at least something
+  expect_error(get_nltt_values(c()))
+
+  #  dt must be from 0.0 to and including 1.0
+  expect_error(get_nltt_values(ape_phylogenies, dt = -0.1))
+  expect_error(get_nltt_values(ape_phylogenies, dt = 1.1))
+
+  # must supply at least two trees
+  expect_error(get_nltt_values(single_phylogeny))
+
+  # must supply a phylogeny
+  expect_error(get_nltt_values(c(1, 2, 3)))
+
+  # must supply only phylogenies
+  expect_error(get_nltt_values(list(c(1, 2), single_phylogeny)))
+})
+
+
+test_that(paste("get_nltt_values: ",
+  "return data type", sep = ""), {
 
   newick1 <- "((A:1,B:1):1,(C:1,D:1):1);"
   newick2 <- paste("((((XD:1,ZD:1):1,CE:2):1,(FE:2,EE:2):1):4,",
