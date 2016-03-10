@@ -136,28 +136,13 @@ df <- ribir::get_nltt_values(c(phylogeny1,phylogeny2), dt = 0.01)
 Plotted with a bad smoother, but does look nice:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies") + geom_smooth(span = 0.1)
-```
-
-Shows the mean as intended, without confidence interval:
-
-```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
-  stat_summary(fun.y=mean, geom = "line")
-```
-
-Shows mean and confidence interval as crosshair per point:
-
-```{r}
-# Need library Hmisc
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
-  stat_summary(fun.data = "mean_cl_boot", color = "red")
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies", color = ID, size = I(0.1)) + geom_smooth(span = 0.1)
 ```
 
 GOOD: also shows original lines:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID, size = I(0.1)) + 
   stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
 
@@ -259,28 +244,13 @@ df <- ribir::get_nltt_values(c(phylogeny1,phylogeny2), dt = 0.01)
 Plotted with a bad smoother, but does look nice:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies") + geom_smooth(span = 0.1)
-```
-
-Shows the mean as intended, without confidence interval:
-
-```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
-  stat_summary(fun.y=mean, geom = "line")
-```
-
-Shows mean and confidence interval as crosshair per point:
-
-```{r}
-# Need library Hmisc
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
-  stat_summary(fun.data = "mean_cl_boot", color = "red")
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies", color = ID, size = I(0.1)) + geom_smooth(span = 0.1)
 ```
 
 GOOD: also shows original lines:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID, size = I(0.1)) + 
   stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
 
@@ -291,36 +261,23 @@ qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT pl
   stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
 
-### Example: Three random trees
+### Example: Five random trees
 
 Create three random trees:
 
 ```{r}
 set.seed(42)
-newick1 <- "((A:1,B:1):1,(C:1,D:1):1);"
-newick2 <- paste("((((XD:1,ZD:1):1,CE:2):1,(FE:2,EE:2):1):4,",
-  "((AE:1,BE:1):1,(WD:1,YD:1):1):5);", sep = "")
-phylogeny1 <- ape::read.tree(text = newick1)
-phylogeny2 <- ape::read.tree(text = newick2)
+phylogeny1 <- rcoal(10)
+phylogeny2 <- rcoal(20)
 phylogeny3 <- rcoal(30)
-phylogenies <- c(phylogeny1, phylogeny2, phylogeny3)
+phylogeny4 <- rcoal(40)
+phylogeny5 <- rcoal(50)
+phylogeny6 <- rcoal(60)
+phylogeny7 <- rcoal(70)
+phylogenies <- c(phylogeny1, phylogeny2, phylogeny3, 
+  phylogeny4, phylogeny5, phylogeny6, phylogeny7)
 ```
 
-How there are plotted:
-
-```{r}
-plot(phylogeny1)
-plot(phylogeny2)
-plot(phylogeny3)
-```
-
-Their nLTT plots:
-
-```{r}
-nLTT.plot(phylogeny1, ylim = c(0, 1))
-nLTT.plot(phylogeny2, ylim = c(0, 1))
-nLTT.plot(phylogeny3, ylim = c(0, 1))
-```
 
 Here a demo how the new function works:
 
@@ -332,34 +289,19 @@ Plotted with a bad smoother, but does look nice:
 
 ```{r}
 df <- ribir::get_nltt_values(phylogenies, dt = 0.01)
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies", color = ID) + geom_smooth(span = 0.1)
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies", color = ID, size = I(0.1)) + geom_smooth(span = 0.1)
 ```
 
-Shows the mean as intended, without confidence interval:
+GOOD: shows original lines and confidence interval:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID) + 
-  stat_summary(fun.y=mean, geom = "line")
-```
-
-Shows mean and confidence interval as crosshair per point:
-
-```{r}
-# Need library Hmisc
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID) + 
-  stat_summary(fun.data = "mean_cl_boot", color = "red")
-```
-
-GOOD: also shows original lines:
-
-```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID) + 
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID, size = I(0.1)) + 
   stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
 
 GOOD: omits original lines:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID) + 
+qplot(t, nltt, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT plot of phylogenies") + 
   stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
