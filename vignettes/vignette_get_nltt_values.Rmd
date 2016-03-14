@@ -142,7 +142,7 @@ qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of ph
 GOOD: also shows original lines:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID, size = I(0.1)) + 
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = id, size = I(0.1)) + 
   stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
 
@@ -244,13 +244,13 @@ df <- ribir::get_nltt_values(c(phylogeny1,phylogeny2), dt = 0.01)
 Plotted with a bad smoother, but does look nice:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies", color = ID, size = I(0.1)) + geom_smooth(span = 0.1)
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies", color = id, size = I(0.1)) + geom_smooth(span = 0.1)
 ```
 
 GOOD: also shows original lines:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID, size = I(0.1)) + 
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = id, size = I(0.1)) + 
   stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
 
@@ -289,13 +289,13 @@ Plotted with a bad smoother, but does look nice:
 
 ```{r}
 df <- ribir::get_nltt_values(phylogenies, dt = 0.01)
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies", color = ID, size = I(0.1)) + geom_smooth(span = 0.1)
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "nLTT plot of phylogenies", color = id, size = I(0.1)) + geom_smooth(span = 0.1)
 ```
 
 GOOD: shows original lines and confidence interval:
 
 ```{r}
-qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = ID, size = I(0.1)) + 
+qplot(t, nltt, data = df, geom = "point", ylim = c(0,1), main = "Average nLTT plot of phylogenies", color = id, size = I(0.1)) + 
   stat_summary(fun.data = "mean_cl_boot", color = "red", geom = "smooth")
 ```
 
