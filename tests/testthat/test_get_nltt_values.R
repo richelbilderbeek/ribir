@@ -1,5 +1,6 @@
-test_that(paste("get_nltt_values: ",
-  "input data type", sep = ""), {
+context("get_nltt_values")
+
+test_that("input data type", {
 
   n_trees <- 2
   n_tips <- 3
@@ -25,8 +26,7 @@ test_that(paste("get_nltt_values: ",
 })
 
 
-test_that(paste("get_nltt_values: ",
-  "return data type", sep = ""), {
+test_that("return data type", {
 
   newick1 <- "((A:1,B:1):1,(C:1,D:1):1);"
   newick2 <- paste("((((XD:1,ZD:1):1,CE:2):1,(FE:2,EE:2):1):4,",
@@ -50,8 +50,7 @@ test_that(paste("get_nltt_values: ",
 
 
 
-test_that(paste("get_nltt_values: ",
-  "How to stretch an nltt timepoints matrix: ",
+test_that(paste("How to stretch an nltt timepoints matrix: ",
   "Example: Two easy tree", sep = ""), {
 
   # The average of nltts A and B should be C
@@ -135,8 +134,7 @@ test_that(paste("get_nltt_values: ",
 
 
 
-test_that(paste("get_nltt_values: ",
-  "How to stretch an nltt timepoints matrix: ",
+test_that(paste("How to stretch an nltt timepoints matrix: ",
   "Example: Two harder trees", sep = ""), {
 
   newick1 <- "((A:1,B:1):1,(C:1,D:1):1);"
@@ -199,9 +197,8 @@ test_that(paste("get_nltt_values: ",
     ),
     ncol = 3, byrow = FALSE)
   expected <- as.data.frame(x = m)
-  colnames(expected) <- c("ID", "t", "nltt")
+  colnames(expected) <- c("id", "t", "nltt")
   expected[, 1] <- sapply(expected[, 1], as.integer)
-
   expect_equal(nrow(result), 12)
   expect_equal(ncol(result), 3)
   expect_equal(all.equal(result, expected), TRUE)
