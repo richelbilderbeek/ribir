@@ -17,4 +17,39 @@ A dataframe of timepoints with the nLTT value of each phylogeny in time
 \description{
 Collects the nLTT values of all phylogenies in the melted/uncast/long form
 }
+\examples{
+  library(ape)
+  library(ggplot2)
+  library(ribir)
+
+  # Create some random phylogenies
+  phylogeny1 <- rcoal(10)
+  phylogeny2 <- rcoal(20)
+  phylogeny3 <- rcoal(30)
+  phylogeny4 <- rcoal(40)
+  phylogeny5 <- rcoal(50)
+  phylogeny6 <- rcoal(60)
+  phylogeny7 <- rcoal(70)
+  phylogenies <- c(phylogeny1, phylogeny2, phylogeny3,
+    phylogeny4, phylogeny5, phylogeny6, phylogeny7
+  )
+
+  # Obtain the nLTT values
+  t <- get_nltt_values(phylogenies, dt = 0.2)
+
+  # Plot the phylognies, where the individual nLTT values are visible
+  qplot(
+    t, nltt, data = df, geom = "blank", ylim = c(0,1),
+    main = "Average nLTT plot of phylogenies"
+  ) + stat_summary(
+    fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+  )
+
+  # Plot the phylognies, where the individual nLTT values are omitted
+  qplot(
+    t, nltt, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT plot of phylogenies"
+  ) + stat_summary(
+    fun.data = "mean_cl_boot", color = "red", geom = "smooth"
+  )
+}
 
