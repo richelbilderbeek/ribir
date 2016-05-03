@@ -35,11 +35,11 @@ Collects the nLTT values of all phylogenies in the melted/uncast/long form
   )
 
   # Obtain the nLTT values
-  t <- get_nltt_values(phylogenies, dt = 0.2)
+  nltt_values <- get_nltt_values(phylogenies, dt = 0.2)
 
   # Plot the phylognies, where the individual nLTT values are visible
   qplot(
-    t, nltt, data = df, geom = "blank", ylim = c(0,1),
+    t, nltt, data = nltt_values, geom = "blank", ylim = c(0,1),
     main = "Average nLTT plot of phylogenies"
   ) + stat_summary(
     fun.data = "mean_cl_boot", color = "red", geom = "smooth"
@@ -47,7 +47,8 @@ Collects the nLTT values of all phylogenies in the melted/uncast/long form
 
   # Plot the phylognies, where the individual nLTT values are omitted
   qplot(
-    t, nltt, data = df, geom = "blank", ylim = c(0,1), main = "Average nLTT plot of phylogenies"
+    t, nltt, data = nltt_values, geom = "blank", ylim = c(0,1),
+    main = "Average nLTT plot of phylogenies"
   ) + stat_summary(
     fun.data = "mean_cl_boot", color = "red", geom = "smooth"
   )
