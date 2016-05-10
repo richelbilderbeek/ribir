@@ -48,7 +48,7 @@ get_average_nltt <- function(
 
   # Set the shape of the plot
   if (replot == FALSE) {
-    plot.default(
+    graphics::plot.default(
       xy,
       xlab = "Normalized Time",
       ylab = "Normalized Lineages",
@@ -82,7 +82,7 @@ get_average_nltt <- function(
     # End of copy
 
     for (stretch_matrix in stretch_matrices) {
-      lines.default(
+      graphics::lines.default(
         stretch_matrix,
         xaxs = "r",
         yaxs = "r",
@@ -95,7 +95,7 @@ get_average_nltt <- function(
   }
 
   # Redraw the average nLTT plot
-  lines.default(
+  graphics::lines.default(
     xy,
     xaxs = "r",
     yaxs = "r",
