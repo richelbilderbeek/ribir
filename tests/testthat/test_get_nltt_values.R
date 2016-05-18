@@ -37,7 +37,7 @@ test_that("return data type", {
   result <- ribir::get_nltt_values(
     c(phylogeny1, phylogeny2), dt = 0.20)
 
-
+  expect_equal(names(result), c("id", "t", "nltt"))
   expect_equal(nrow(result), 12)
   expect_equal(ncol(result), 3)
 

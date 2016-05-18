@@ -21,7 +21,16 @@
 #'   )
 #'
 #'   # Obtain the nLTT values
-#'   nltt_values <- get_nltt_values(phylogenies, dt = 0.2)
+#'   dt <- 0.2
+#'   nltt_values <- get_nltt_values(phylogenies, dt = dt)
+#'
+#'   # Check properties of nltt_values
+#'   testit::assert(names(nltt_values) == c("id", "t", "nltt"))
+#'   nltt_values_per_phylogeny <- (1 + (1 / dt))
+#'   n_phylogenies <- length(phylogenies)
+#'   testit::assert(nrow(nltt_values)
+#'     == nltt_values_per_phylogeny * n_phylogenies
+#'   )
 #'
 #'   # Plot the phylognies, where the individual nLTT values are visible
 #'   qplot(t, nltt, data = nltt_values, geom = "point",
