@@ -1,0 +1,48 @@
+---
+title: "data.frame: save and load"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{data.frame: save and load}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Here I tested how to do correct file I/O by writing a data frame 
+with column and row names to a `.csv`
+and then loading a data frame from that `.csv` again.
+The content, row names and column names should be present in the loaded
+data frame
+
+```{r}
+csv_filename <- "analyse_files_test.csv"
+df_in <- data.frame(
+  x = c(1, 2, 3), y = c(1, 4, 9)
+)
+rownames(df_in) <- c("a.txt","b.txt","c.txt")
+print(rownames(df_in))
+knitr::kable(head(df_in))
+```
+
+The table should show column and row names in bold.
+
+Saving:
+
+```{r}
+write.csv(x = df_in, file = csv_filename, row.names = TRUE)
+```
+
+Loading:
+
+```{r}
+
+df_out <- read.csv(file = csv_filename, 
+  header = TRUE, 
+  stringsAsFactors = FALSE, 
+  row.names = 1
+)
+knitr::kable(head(df_out))
+```
+
+No idea why `row.names = 1` works, and `row.names = TRUE` not...

@@ -1,0 +1,42 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Distribution of lengths,
+
+Data must be a data frame:
+
+```{r}
+set.seed(42)
+male_lengths <- rnorm(n = 1000, mean = 181, sd = 7)
+female_lengths <- rnorm(n = 1000, mean = 169, sd = 6)
+df_males <- data.frame(length = male_lengths)
+df_females <- data.frame(length = female_lengths)
+
+df_males$description <- 'male'
+df_females$description <- 'female'
+
+data <- rbind(df_males, df_females)
+
+knitr::kable(head(data))
+```
+
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data, 
+  ggplot2::aes(length, fill = description)
+) + ggplot2::geom_histogram(
+  ggplot2::aes(y = ..density..), 
+  alpha = 0.25, 
+  position = 'identity', 
+  binwidth = 0.5
+)
+```
