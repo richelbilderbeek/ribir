@@ -1,0 +1,23 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Adapted from the `approx` documentation.
+
+```{r}
+x <- 1:10
+y <- rnorm(10)
+```
+
+```{r fig.width = 7, fig.height = 7}
+par(mfrow = c(2,1))
+plot(x, y)
+lines(approx(x, y, method = "constant"), col = 4)
+```

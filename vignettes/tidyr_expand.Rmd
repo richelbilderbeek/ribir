@@ -1,0 +1,40 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(tidyr)
+library(dplyr)
+```
+
+```{r}
+df <- data_frame(
+  year   = c(2010, 2010, 2010, 2010, 2012, 2012, 2012),
+  qtr    = c(   1,    2,    3,    4,    1,    2,    3),
+  return = rnorm(7)
+)
+
+knitr::kable(df)
+```
+
+```{r}
+df %>% expand(year, qtr)
+df %>% expand(year = 2010:2012, qtr)
+df %>% expand(year = full_seq(year, 1), qtr)
+df %>% complete(year = full_seq(year, 1), qtr)
+```
+
+```{r}
+df <- data_frame(
+  xs = c(0.0, 1.0),
+  ys = c(0.2, 0.8)
+)
+df %>% expand(xs = seq(0.0, 1.0, 0.2), ys)
+```
