@@ -4,6 +4,7 @@ Imports:
     testit (>= 0.5)
 Suggests:
     devtools (>= 1.10.0),
+    dplyr,
     Hmisc (>= 3.17),
     knitr (>= 1.12),
     ggplot2 (>= 2.1.0),
@@ -12,6 +13,7 @@ Suggests:
     reshape2 (>= 1.4.1),
     rmarkdown (>= 0.9),
     testthat (>= 0.11),
+    tidyr,
     microbenchmark (>= 1.4),
     TreeSim (>= 2.2)
 Title: My personal R package
