@@ -1,0 +1,23 @@
+---
+title: "Vector of functions"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vector of functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+f <- function(x, y) { 
+  return (x + y) 
+}
+g <- function(x, y) { 
+  return (x - y) 
+}
+
+v <- c(f, g)
+v[[1]](2,3)
+v[[2]](2,3)
+```

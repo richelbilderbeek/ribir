@@ -42,3 +42,26 @@ As we know that they are *not* normally distributed,
 ```{r}
 testit::assert(!is_distributed_normally(nnd))
 ```
+
+## Use of `dplyr`
+
+Here we'll try to do something smart:
+
+```{r}
+df_nd  <- data.frame(
+  method = rep("nd" , times = length(nd)), x = nd
+)
+
+df_nnd <- data.frame(
+  method = rep("nnd", times = length(nnd)), x = nnd
+)
+df <- rbind(df_nd, df_nnd)
+df$method <- as.factor(df$method)
+
+library(dplyr)
+df_new <- df %>% 
+  group_by(method) %>% 
+  summarise(is_distributed_normally(x))
+
+knitr::kable(df_new)
+```
