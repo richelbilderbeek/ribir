@@ -1,0 +1,44 @@
+---
+title: "is_distributed_normally"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{is_distributed_normally}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This vignette demonstrates the `is_distributed_normally` function.
+
+```{r}
+library(ribir)
+```
+
+Here we create a normally distributed collection of values:
+
+```{r fig.width = 7, fig.height = 7}
+nd <- rnorm(n = 1000, mean = 0.0, sd = 1.0)
+plot(nd)
+```
+
+As we know that they are normally distributed, 
+`is_distributed_normally` should return true:
+
+```{r}
+testit::assert(is_distributed_normally(nd))
+```
+
+Now we create a non-normal collection of values:
+
+```{r fig.width = 7, fig.height = 7}
+nnd <- runif(n = 1000, min = 0.0, max = 1.0)
+plot(nnd)
+```
+
+As we know that they are *not* normally distributed, 
+`is_distributed_normally` should return false:
+
+```{r}
+testit::assert(!is_distributed_normally(nnd))
+```
