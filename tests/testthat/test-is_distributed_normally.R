@@ -10,4 +10,3 @@ test_that("is_distributed_normally: use", {
   expect_false(is_distributed_normally(nnd))
 
 })
-
