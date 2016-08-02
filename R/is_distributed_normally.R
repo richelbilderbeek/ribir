@@ -16,8 +16,7 @@
 #' @author Richel Bilderbeek
 is_distributed_normally <- function(
   values,
-  p_value = 0.05,
-  ...
+  p_value = 0.05
 ) {
   if (any(is.na(values)) || any(!is.numeric(values))) {
     stop("is_distributed_normally: all values must be numeric")
