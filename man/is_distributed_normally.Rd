@@ -5,7 +5,7 @@
 \title{Sees if the values of a distribution are normally distributed
  using a Shapiro-Wilk normality test}
 \usage{
-is_distributed_normally(values, p_value = 0.05)
+is_distributed_normally(values, p_value = 0.05, ...)
 }
 \arguments{
 \item{values}{the values to check}
