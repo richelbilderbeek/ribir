@@ -18,6 +18,12 @@ is_distributed_normally <- function(
   values,
   p_value = 0.05
 ) {
+  if (any(is.na(values)) || any(!is.numeric(values))) {
+    stop("is_distributed_normally: all values must be numeric")
+  }
+  if (length(values) < 3L || length(values) > 5000L) {
+    stop("is_distributed_normally: sample size must be between 3 and 5000")
+  }
   t <- shapiro.test(x = values)
   if (t$p >= p_value) {
     # Cannot reject distribution is normal
