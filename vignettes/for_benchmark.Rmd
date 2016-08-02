@@ -1,0 +1,71 @@
+---
+title: "for benchmark"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{for benchmark}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This vignette aims to measure the alleged slowness
+of for loops.
+
+Here we have a non-trivial function:
+
+```{r}
+complex_function <- function(x) {
+  out <- sqrt(x)
+  out
+}
+```
+
+Here we create two functions that work on a big vector,
+with and without a for loop:
+
+```{r}
+f_for <- function() {
+  values <- 1:100000
+  n_values <- length(values)
+  for (i in seq(1, n_values)) {
+    values[i] <- complex_function(values[i])
+  }
+  values
+}
+
+f_no_for <- function() {
+  values <- 1:100000
+  values <- vapply(values, FUN = complex_function, FUN.VALUE = 0.0)
+  values
+}
+```
+
+They must give exactly the same results.
+
+```{r}
+testit::assert(f_for() == f_no_for())
+```
+
+Here we run a benchmark, comparing their speeds:
+
+```{r}
+tm <- microbenchmark::microbenchmark(f_for, f_no_for, times = 100000)
+```
+
+Plot as boxplot:
+
+```{r fig.width = 7, fig.height = 7}
+graphics::boxplot(tm)
+```
+
+View the raw results as table:
+
+```{r}
+knitr::kable(summary(tm))
+```
+
+Conclusion: when not growing vectors, using a for-loop
+has little effect on run-time speed, if a non-trivial
+function is used. Already the `sqrt` function is
+non-trivial enough to show little effect.
