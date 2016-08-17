@@ -1,0 +1,240 @@
+---
+title: "Comparing independent means"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Comparing independent means}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Following [1] (chapter 9.5.2.7 'Robust methods to compare independent means', page 382).
+
+# Dataset
+
+```{r}
+set.seed(314)
+n <- 30
+scores1 <- rnorm(n = n, mean = 1, sd  = 0.5)
+scores2 <- runif(n = n, min  = 0, max = 4  )
+
+df_same <- data.frame(
+  score = c(scores1, scores1), 
+  treatment = c(rep(1, n), rep(2, n))
+)
+
+df_different <- data.frame(
+  score = c(scores1, scores2), 
+  treatment = c(rep(1, times = n), rep(2, times = n))
+)
+df_different$treatment <- as.factor(df_different$treatment)
+```
+
+Taking a look at the dataset ..
+
+as a histogram:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_different,
+  ggplot2::aes(x = df_different$score, fill = df_different$treatment)
+) + ggplot2::geom_histogram(
+  position = "identity",
+  alpha = 0.5, ggplot2::aes(y = ..density..)
+)
+```
+
+as a density plot:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_different,
+  ggplot2::aes(x = df_different$score, fill = df_different$treatment)
+)+ ggplot2::geom_density(
+  alpha = 0.5
+)
+```
+
+as both a histogram and density plot:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df_different,
+  ggplot2::aes(x = df_different$score, fill = df_different$treatment)
+) + ggplot2::geom_histogram(
+  position = "identity",
+  alpha = 0.5, ggplot2::aes(y = ..density..)
+) + ggplot2::geom_density(
+  alpha = 0.1
+)
+```
+
+# Summary
+
+```{r}
+
+df <- data.frame(
+  data_set = rep(c("same", "different"), 3),
+  test = rep(c("yuen", "yuenbt", "pb2gen"), each = 2),
+  p_value = c(
+    WRS2::yuen(score ~ treatment, data = df_same)$p.value,
+    WRS2::yuen(score ~ treatment, data = df_different)$p.value,
+    WRS2::yuenbt(score ~ treatment, data = df_same, nboot = 2000)$p.value,
+    WRS2::yuenbt(score ~ treatment, data = df_different, nboot = 2000)$p.value,
+    WRS2::pb2gen(score ~ treatment, data = df_same)$p.value,
+    WRS2::pb2gen(score ~ treatment, data = df_different)$p.value
+  )
+)    
+knitr::kable(df)
+```
+
+# General setup
+
+```{r}
+p_critical <- 0.05
+```
+
+# yuen
+
+```{r}
+p_same <- WRS2::yuen(score ~ treatment, data = df_same)$p.value
+p_different <- WRS2::yuen(score ~ treatment, data = df_different)$p.value
+
+print(
+  paste0(
+    "Chance df_same treatments are from same dataset: ",
+    p_same
+  )
+)
+
+if (p_same >= p_critical) {
+  print("p_same means are not significantly different")
+} else {
+  print("p_same means are significantly different")
+}
+
+print(
+  paste0(
+    "Chance p_different treatments are from same dataset: ",
+    p_different
+  )
+)
+
+if (p_different >= p_critical) {
+  print("p_different means are not significantly different")
+} else {
+  print("p_different means are significantly different")
+}
+
+```
+
+
+# yuenbt
+
+```{r}
+p_critical <- 0.05
+scores1 <- rnorm(n = 10, mean = 1, sd = 0.5)
+scores2 <- rnorm(n = 10, mean = 2, sd = 0.5)
+
+df_same <- data.frame(
+  score = c(scores1, scores1), 
+  treatment = c(rep(1, 10), rep(2, 10))
+)
+
+df_different <- data.frame(
+  score = c(scores1, scores2), 
+  treatment = c(rep(1, 10), rep(2, 10))
+)
+
+p_same <- WRS2::yuenbt(
+  score ~ treatment, 
+  data = df_same,
+  nboot = 2000
+)$p.value
+
+p_different <- WRS2::yuenbt(
+  score ~ treatment, 
+  data = df_different,
+  nboot = 2000
+)$p.value
+
+print(
+  paste0(
+    "Chance df_same treatments are from same dataset: ",
+    p_same
+  )
+)
+
+if (p_same >= p_critical) {
+  print("p_same means are not significantly different")
+} else {
+  print("p_same means are significantly different")
+}
+
+print(
+  paste0(
+    "Chance p_different treatments are from same dataset: ",
+    p_different
+  )
+)
+
+if (p_different >= p_critical) {
+  print("p_different means are not significantly different")
+} else {
+  print("p_different means are significantly different")
+}
+
+```
+
+# pb2gen
+
+```{r}
+p_critical <- 0.05
+scores1 <- rnorm(n = 10, mean = 1, sd = 0.5)
+scores2 <- rnorm(n = 10, mean = 2, sd = 0.5)
+
+df_same <- data.frame(
+  score = c(scores1, scores1), 
+  treatment = c(rep(1, 10), rep(2, 10))
+)
+
+df_different <- data.frame(
+  score = c(scores1, scores2), 
+  treatment = c(rep(1, 10), rep(2, 10))
+)
+
+p_same <- WRS2::pb2gen(score ~ treatment, data = df_same)$p.value
+p_different <- WRS2::pb2gen(score ~ treatment, data = df_different)$p.value
+
+print(
+  paste0(
+    "Chance df_same treatments are from same dataset: ",
+    p_same
+  )
+)
+
+if (p_same >= p_critical) {
+  print("p_same means are not significantly different")
+} else {
+  print("p_same means are significantly different")
+}
+
+print(
+  paste0(
+    "Chance p_different treatments are from same dataset: ",
+    p_different
+  )
+)
+
+if (p_different >= p_critical) {
+  print("p_different means are not significantly different")
+} else {
+  print("p_different means are significantly different")
+}
+
+```
+
+## References
+
+ * [1] Andy Field, Z. F., and Jeremy Miles. "Discovering statistics using R." (2012).

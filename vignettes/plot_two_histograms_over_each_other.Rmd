@@ -40,3 +40,74 @@ ggplot2::ggplot(
   binwidth = 0.5
 )
 ```
+
+A density plot:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  data, 
+  ggplot2::aes(length, fill = description)
+) + ggplot2::geom_density(
+  alpha = 0.25
+)
+```
+
+## Three
+
+Create dataset:
+
+```{r}
+set.seed(42)
+a <- rnorm(n = 1000, mean = 0.2, sd = 0.04)
+b <- rnorm(n = 1000, mean = 0.2, sd = 0.05)
+c <- rnorm(n = 1000, mean = 0.3, sd = 0.06)
+df <- data.frame(
+  x = c(a, b, c),
+  model = c(rep("BD", 1000), rep("?PBD", 1000), rep("PBD?", 1000))
+)
+df$model <- as.factor(df$model)
+```
+
+Plot all three:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df, 
+  ggplot2::aes(x, fill = model)
+) + ggplot2::geom_density(
+  alpha = 0.25
+) + ggplot2::scale_x_continuous("Error", limits = c(0, 0.5))
+```
+
+Plot only A:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df[ df$model == "BD", ], 
+  ggplot2::aes(x, fill = model)
+) + ggplot2::geom_density(
+  alpha = 0.25
+) + ggplot2::scale_x_continuous("Error", limits = c(0, 0.5))
+```
+
+Plot only A and B:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df[ df$model == "BD" | df$model == "?PBD", ], 
+  ggplot2::aes(x, fill = model)
+) + ggplot2::geom_density(
+  alpha = 0.25
+) + ggplot2::scale_x_continuous("Error", limits = c(0, 0.5))
+```
+
+Plot only A and C:
+
+```{r fig.width = 7, fig.height = 7}
+ggplot2::ggplot(
+  df[ df$model == "BD" | df$model == "PBD?", ], 
+  ggplot2::aes(x, fill = model)
+) + ggplot2::geom_density(
+  alpha = 0.25
+) + ggplot2::scale_x_continuous("Error", limits = c(0, 0.5))
+```
