@@ -1,21 +1,22 @@
 Package: ribir
 Imports:
-    ape (>= 3.4),
-    testit (>= 0.5)
+    ape,
+    testit
 Suggests:
-    devtools (>= 1.10.0),
+    devtools,
     dplyr,
-    Hmisc (>= 3.17),
-    knitr (>= 1.12),
-    ggplot2 (>= 2.1.0),
-    lintr (>= 0.3.3),
-    nLTT (>= 1.1),
-    reshape2 (>= 1.4.1),
-    rmarkdown (>= 0.9),
-    testthat (>= 0.11),
+    Hmisc,
+    knitr,
+    ggplot2,
+    lintr,
+    nLTT,
+    reshape2,
+    rmarkdown,
+    testthat,
     tidyr,
-    microbenchmark (>= 1.4),
-    TreeSim (>= 2.2)
+    microbenchmark,
+    TreeSim,
+    WRS2
 Title: My personal R package
 Version: 1.0
 Authors@R: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"))
