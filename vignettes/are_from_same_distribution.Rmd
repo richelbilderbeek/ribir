@@ -1,0 +1,34 @@
+---
+title: "Are two samples from the same distributions?"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Are two samples from the same distributions?}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+set.seed(42)
+a <- runif(100)
+b <- runif(100)
+alpha <- 0.05 # Significance level
+p_value <- wilcox.test(a, b, correct = FALSE)$p.value
+if (p_value < alpha) {
+  print(paste0("Different distributions, p = ", p_value))
+} else {
+  print(paste0("Same distributions, p = ", p_value))
+}
+```
+
+```{r}
+a <- runif(100)
+b <- rnorm(100)
+p_value <- wilcox.test(a, b, correct = FALSE)$p.value
+if (p_value < alpha) {
+  print(paste0("Different distributions, p = ", p_value))
+} else {
+  print(paste0("Same distributions, p = ", p_value))
+}
+```

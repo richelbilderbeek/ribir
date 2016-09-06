@@ -1,0 +1,62 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(reshape2)
+```
+
+A simplest case:
+
+```{r}
+df <- data.frame(
+  treatment = rep(c("A", "B"), each = 5),
+  replicate = rep(LETTERS[3:7], times = 2),
+  value = seq(1, 10)
+)
+df$treatment <- as.factor(df$treatment)
+df$replicate <- as.factor(df$replicate)
+
+knitr::kable(df)
+
+knitr::kable(
+  reshape2::dcast(
+    df, 
+    treatment ~ replicate, 
+    value.var = "value"
+  )
+)
+```
+
+Now with another column before treatment:
+
+```{r}
+df <- data.frame(
+  person = rep(c("Jack", "Jim"), each = 4),
+  treatment = rep(c("A", "B"), each = 2, times = 2),
+  replicate = rep(c("C", "D"), times = 4),
+  value = seq(1, 8)
+)
+df
+df$person <- as.factor(df$person)
+df$treatment <- as.factor(df$treatment)
+df$replicate <- as.factor(df$replicate)
+
+knitr::kable(df)
+
+knitr::kable(
+  reshape2::dcast(
+    df, 
+    person + treatment ~ replicate, 
+    value.var = "value"
+  )
+)
+```
+
