@@ -9,6 +9,15 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(reshape2)
+```
+
+## Mann-Whitney U test
+
 ```{r}
 set.seed(42)
 a <- runif(100)
@@ -31,4 +40,51 @@ if (p_value < alpha) {
 } else {
   print(paste0("Same distributions, p = ", p_value))
 }
+```
+
+## Measurements in two columns
+
+Now these distributions are put in a data frame, replicates in a different column:
+
+```{r}
+df <- data.frame(treatment = rep("A", 10), d1 = runif(10), d2 = rnorm(10))
+df$treatment <- as.factor(df$treatment)
+knitr::kable(df)
+
+
+df_new <- df %>% group_by(treatment) %>% summarise(p_value = wilcox.test(d1, d2)$p.value)
+
+knitr::kable(df_new)
+```
+
+## Measurements in one column
+
+Now these distributions are put in a data frame, replicates in a different column.
+
+This will not work as simple as I would expect:
+one has to add the index of each observation
+
+```{r}
+df <- data.frame(
+  treatment = rep("A", 10), 
+  replicate = rep(c("B","C"), each = 5),
+  i = rep(1:5, times = 2), # You will get 'Duplicate identifiers for rows' if you remove this
+  x = c(runif(5), rnorm(5)),
+  stringsAsFactors = FALSE
+)
+df$treatment <- as.factor(df$treatment)
+df$replicate <- as.factor(df$replicate)
+df$i <- as.factor(df$i)
+knitr::kable(df)
+
+df <- df %>% tidyr::spread(replicate, x)
+# Remove column with title 'i'
+df <- subset(df, select = -c(i))
+knitr::kable(df)
+
+# Now we can compare the columns
+df_new <- df %>% group_by(treatment) %>% summarise(p_value = wilcox.test(B, C)$p.value)
+
+knitr::kable(df_new)
+
 ```
