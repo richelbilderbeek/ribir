@@ -1,0 +1,29 @@
+---
+title: "The gamma statistic and the pull-of-the-present"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{The gamma statistic and the pull-of-the-present}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+set.seed(42)
+trees <- TreeSim::sim.bd.age(
+  age = 10, numbsim = 2, lambda = 0.2, mu = 0.0, 
+  complete = FALSE
+)
+ape::plot.phylo(trees[[1]])
+
+
+gammas <- rep(NA, length(trees))
+
+for (i in seq_along(trees)) {
+  gammas[i] <- ape::gammaStat(trees[[i]])
+}
+
+gammas
+
+```
