@@ -1,9 +1,10 @@
 Package: ribir
 Imports:
   ape,
+  beastscriptr,
+  PBD,
   testit
 Suggests:
-  beastscriptr,
   devtools,
   dplyr,
   ggplot2,
@@ -12,7 +13,6 @@ Suggests:
   lintr,
   microbenchmark,
   nLTT,
-  PBD,
   phangorn,
   reshape2,
   rmarkdown,
