@@ -1,0 +1,36 @@
+---
+title: "Demonstration of the gamma statistic"
+author: "Richel Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Demonstration of the gamma statistic}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+options(warn = 2)
+```
+
+```{r fig.width = 7, fig.height = 4}
+newick <- "((A:2,B:2):8,(C:2,B:2):8);"
+phylogeny <- ape::read.tree(text = newick)
+gamma <- ape::gammaStat(phylogeny)
+plot(phylogeny, main = gamma)
+```
+
+```{r fig.width = 7, fig.height = 4}
+newick <- "((A:3,B:3):6,(C:3,B:3):6);"
+phylogeny <- ape::read.tree(text = newick)
+gamma <- ape::gammaStat(phylogeny)
+plot(phylogeny, main = gamma)
+```
+
+
+```{r fig.width = 7, fig.height = 4}
+newick <- "((A:8,B:8):2,(C:8,B:8):2);"
+phylogeny <- ape::read.tree(text = newick)
+gamma <- ape::gammaStat(phylogeny)
+plot(phylogeny, main = gamma)
+```
