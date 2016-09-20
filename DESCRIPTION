@@ -11,6 +11,7 @@ Suggests:
   lintr,
   microbenchmark,
   nLTT,
+  phangorn,
   reshape2,
   rmarkdown,
   testthat,
