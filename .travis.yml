@@ -9,10 +9,6 @@ r_github_packages:
   - rsetienne/PBD/PBD
   - beast-dev/RBeast
 
-before_script:
-  - Rscript -e 'devtools::install_github("richelbilderbeek/beastscriptr")'
-  - Rscript -e 'devtools::install_github("rsetienne/PBD/PBD")'
-
 after_success:
   - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'library(covr); codecov()'
