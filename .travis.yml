@@ -6,6 +6,7 @@ r_github_packages:
   - jimhester/covr
   - MangoTheCat/goodpractice
   - richelbilderbeek/beastscriptr
+  - rsetienne/PBD
 
 after_success:
   - Rscript -e 'lintr::lint_package()'

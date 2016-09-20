@@ -22,6 +22,7 @@ Remotes:
   jimhester/covr,
   jimhester/lintr,
   richelbilderbeek/beastscriptr,
+  rsetienne/PBD,
   MangoTheCat/goodpractice
 Title: My personal R package
 Version: 1.0
