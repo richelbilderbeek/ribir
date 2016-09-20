@@ -2,7 +2,7 @@
 title: "for benchmark"
 author: "Richel Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{for benchmark}
   %\VignetteEngine{knitr::rmarkdown}
