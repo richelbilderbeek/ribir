@@ -3,7 +3,7 @@ Imports:
   ape,
   testit
 Suggests:
-  beastscriptr,
+  richelbilderbeek/beastscriptr,
   devtools,
   dplyr,
   ggplot2,
