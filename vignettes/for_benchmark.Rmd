@@ -55,7 +55,7 @@ tm <- microbenchmark::microbenchmark(f_for, f_no_for, times = 100000)
 
 Plot as boxplot:
 
-```{r}
+```
 graphics::boxplot(tm)
 ```
 
