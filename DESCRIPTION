@@ -5,16 +5,16 @@ Imports:
 Suggests:
     devtools,
     dplyr,
+    ggplot2,
     Hmisc,
     knitr,
-    ggplot2,
     lintr,
+    microbenchmark,
     nLTT,
     reshape2,
     rmarkdown,
     testthat,
     tidyr,
-    microbenchmark,
     TreeSim,
     WRS2
 Remotes:
