@@ -3,6 +3,7 @@ Imports:
   ape,
   testit
 Suggests:
+  beastscriptr,
   devtools,
   dplyr,
   ggplot2,
@@ -13,7 +14,6 @@ Suggests:
   nLTT,
   phangorn,
   reshape2,
-  ribir,
   rmarkdown,
   testthat,
   tidyr,
