@@ -18,7 +18,7 @@ Suggests:
     TreeSim,
     WRS2
 Remotes:
-  richelsbilderbeek/beastscriptr
+    richelsbilderbeek/beastscriptr
 Title: My personal R package
 Version: 1.0
 Authors@R: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"))
