@@ -11,26 +11,14 @@ add_outgroup_to_phylogeny <- function(
   outgroup_name = "Outgroup"
 ) {
 
-  if (class(phylogeny) != "phylo") {
-    stop(
-      "add_outgroup_to_phylogeny: ",
-      "parameter 'phylogeny' must be of type 'phylo', ",
-      "instead of type", class(phylogeny)
-    )
+  if (!is_phylogeny(phylogeny)) {
+    stop("phylogeny must be a phylogeny")
   }
   if (class(stem_length) != "numeric") {
-    stop(
-      "add_outgroup_to_phylogeny: ",
-      "parameter 'stem_length' must be of type 'numeric', ",
-      "instead of type", class(stem_length)
-    )
+    stop("stem_length must be a number")
   }
   if (class(outgroup_name) != "character") {
-    stop(
-      "add_outgroup_to_phylogeny: ",
-      "parameter 'outgroup_name' must be of type 'character', ",
-      "instead of type", class(outgroup_name)
-    )
+    stop("outgroup_name must be a word")
   }
 
   n_taxa <- length(phylogeny$tip.label)
