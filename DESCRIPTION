@@ -27,7 +27,7 @@ Remotes:
   rsetienne/PBD/PBD,
   MangoTheCat/goodpractice
 Title: ribir, basic phylogenetics page
-Version: 1.0
+Version: 1.1
 Authors@R: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"))
 Description: This is my personal R package, that is a collection of my personal code snippets.
 Depends:
