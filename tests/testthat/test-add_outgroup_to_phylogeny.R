@@ -39,4 +39,3 @@ test_that("add_outgroup_to_phylogeny: abuse", {
     "outgroup_name must be a word"
   )
 })
-
