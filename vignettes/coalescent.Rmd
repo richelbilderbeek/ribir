@@ -1,0 +1,61 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+coalesce_exact <- function(n, t) {
+#   if (n <= 0) {
+#     stop("n must be bigger than zero")
+#     }
+#   if (t <= 0) {
+#     stop("t must be bigger than zero")
+#     }
+
+  f <- 1.0 / (2.0 * n)
+  out <- ((1.0 - f) ^ (t - 1.0)) * f
+  out
+  
+}
+
+coalesce_approx <- function(n, t) {
+#   if (n <= 0) {
+#     stop("n must be bigger than zero")
+#     }
+#   if (t <= 0) {
+#     stop("t must be bigger than zero")
+#     }
+
+  out <- (1 / (2.0 * n)) * exp( -(t - 1.0) / (2.0 * n) )
+  out
+  
+}
+
+ts <- 11
+ns <- c(2,4,8,16)
+
+df <- data.frame(
+  n = rep(ns, each = ts),
+  t = rep(seq(from = 1, to = ts), time = length(ns))
+)
+df <- dplyr::mutate(df, c = coalesce_exact(n = df$n, t = df$t))
+df$n <- as.factor(df$n)
+df$t <- as.factor(df$t)
+
+
+ggplot2::ggplot(
+  df, 
+  ggplot2::aes(x = df$t, y = df$c, colour = df$n)
+) + ggplot2::geom_point()
+
+
+
+```
+
+
