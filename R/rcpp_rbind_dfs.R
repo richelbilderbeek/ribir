@@ -61,5 +61,4 @@ rcpp_rbind_dfs <- function() {
     df <- rbind(df, create_random_df())
   }
   return (df)
-
 }
