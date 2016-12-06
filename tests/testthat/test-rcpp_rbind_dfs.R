@@ -1,41 +1,23 @@
-context("add_outgroup_to_phylogeny")
+context("rcpp_rbind_dfs")
 
-test_that("add_outgroup_to_phylogeny: use", {
+test_that("rbind_dfs and rcpp_rbind_dfs have same output", {
 
-  phylogeny <- add_outgroup_to_phylogeny(
-    phylogeny = ape::rcoal(10),
-    stem_length = 0.0,
-    outgroup_name = "Outgroup"
-  )
-  expect_equal(class(phylogeny), "phylo")
+  set.seed(42)
+  df1 <- rbind_dfs()
+  set.seed(42)
+  df2 <- rcpp_rbind_dfs()
+  expect_equal(df1, df2)
+})
+
+test_that("rbind_dfs and rcpp_rbind_dfs have diffent times", {
+
+  set.seed(42)
+  t1 <- system.time(replicate(1, rbind_dfs()))
+  set.seed(42)
+  t2 <- system.time(replicate(1, rcpp_rbind_dfs()))
+  #Except a ten-fold difference at least
+  expect_true(t1[1] > 10 * t2[1])
 })
 
 
-test_that("add_outgroup_to_phylogeny: abuse", {
 
-  expect_error(
-    add_outgroup_to_phylogeny(
-      phylogeny = "I am not of class phylo", # Error
-      stem_length = 0.0,
-      outgroup_name = "Outgroup"
-    ),
-    "phylogeny must be a phylogeny"
-  )
-  expect_error(
-    add_outgroup_to_phylogeny(
-      phylogeny = ape::rcoal(10),
-      stem_length = "I am not a length", # Error
-      outgroup_name = "Outgroup"
-    ),
-    "stem_length must be a number"
-  )
-
-  expect_error(
-    add_outgroup_to_phylogeny(
-      phylogeny = ape::rcoal(10),
-      stem_length = 0.0,
-      outgroup_name = ape::rcoal(10) # Error
-    ),
-    "outgroup_name must be a word"
-  )
-})

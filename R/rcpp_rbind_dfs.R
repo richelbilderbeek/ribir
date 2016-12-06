@@ -45,9 +45,21 @@ rbind_dfs <- function() {
   {
     df <- rbind(df, create_random_df())
   }
+  return (df)
 }
 
+#' Combines multiple random-row data frames using rbind.
+#' It is to be compared to rbind_dfs, that does the
+#' same without using Rcpp
+#' @author Richel Bilderbeek
+#' @export
 rcpp_rbind_dfs <- function() {
 
+  df <- create_random_df()
+  for (i in seq(1, 1000))
+  {
+    df <- rbind(df, create_random_df())
+  }
+  return (df)
 
 }
