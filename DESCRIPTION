@@ -6,7 +6,6 @@ Suggests:
   devtools,
   dplyr,
   ggplot2,
-  Hmisc,
   knitr,
   lintr,
   microbenchmark,
@@ -38,4 +37,3 @@ RoxygenNote: 5.0.1
 VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/ribir
 BugReports: https://github.com/richelbilderbeek/ribir/issues
-LinkingTo: Rcpp
