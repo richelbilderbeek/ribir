@@ -9,7 +9,8 @@ add_outgroup_to_phylogeny(phylogeny, stem_length, outgroup_name = "Outgroup")
 \arguments{
 \item{phylogeny}{a phylogeny}
 
-\item{stem_length}{How long will the length of the outgroup be before the crown?}
+\item{stem_length}{How long will the length of the outgroup be before
+the crown?}
 
 \item{outgroup_name}{How is the outgroup named?}
 }
@@ -22,4 +23,3 @@ Adds an outgroup to a phylogeny
 \author{
 Richel Bilderbeek
 }
-

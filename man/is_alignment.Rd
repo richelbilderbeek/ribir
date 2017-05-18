@@ -18,4 +18,3 @@ Determines if the input is an alignment of type DNAbin
 \author{
 Richel Bilderbeek
 }
-

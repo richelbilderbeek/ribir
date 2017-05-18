@@ -21,4 +21,3 @@ Does not use pbd_sim()$stree, but generates these like PBD does
 \author{
 Richel Bilderbeek
 }
-

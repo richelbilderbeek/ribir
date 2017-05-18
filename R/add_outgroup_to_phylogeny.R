@@ -1,6 +1,7 @@
 #' Adds an outgroup to a phylogeny
 #' @param phylogeny a phylogeny
-#' @param stem_length How long will the length of the outgroup be before the crown?
+#' @param stem_length How long will the length of the outgroup be before
+#'   the crown?
 #' @param outgroup_name How is the outgroup named?
 #' @return A phylogeny, of type phylo
 #' @export
@@ -23,7 +24,7 @@ add_outgroup_to_phylogeny <- function(
 
   n_taxa <- length(phylogeny$tip.label)
 
-  crown_age <- ape::dist.nodes(phylogeny)[n_taxa + 1][1]
+  crown_age <- ape::dist.nodes(phylogeny)[n_taxa + 1][1] # nolint ape does not use snake_case
   phylogeny$root.edge <- stem_length
   # Add an outgroup
   # Thanks to Liam J. Revell,

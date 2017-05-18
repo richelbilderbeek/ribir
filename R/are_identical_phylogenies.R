@@ -17,5 +17,5 @@ are_identical_phylogenies <- function(p, q) {
   if (!is_phylogeny(q)) {
     stop("q must be a phylogeny")
   }
-  return (ape::all.equal.phylo(p, q))
+  return(ape::all.equal.phylo(p, q))
 }

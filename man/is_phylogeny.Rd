@@ -18,4 +18,3 @@ Checks if the input is a phylogeny
 \author{
 Richel Bilderbeek
 }
-

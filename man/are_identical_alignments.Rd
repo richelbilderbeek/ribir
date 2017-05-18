@@ -20,4 +20,3 @@ Determines if the two alignments are equal
 \author{
 Richel Bilderbeek
 }
-

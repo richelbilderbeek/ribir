@@ -11,5 +11,5 @@ are_identical_alignments <- function(p, q) {
   if (!ribir::is_alignment(q)) {
     stop("q must be an alignment")
   }
-  return (identical(p, q))
+  return(identical(p, q))
 }

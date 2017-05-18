@@ -33,7 +33,7 @@ Depends:
     R (>= 3.2)
 License: file LICENSE
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/ribir
 BugReports: https://github.com/richelbilderbeek/ribir/issues
