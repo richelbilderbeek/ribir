@@ -25,7 +25,7 @@ add_outgroup_to_phylogeny <- function(
   n_taxa <- length(phylogeny$tip.label)
 
   crown_age <- ape::dist.nodes(phylogeny)[n_taxa + 1][1] # nolint ape does not use snake_case
-  phylogeny$root.edge <- stem_length
+  phylogeny$root.edge <- stem_length # nolint ape does not use snake_case
   # Add an outgroup
   # Thanks to Liam J. Revell,
   # http://grokbase.com/t/r/r-sig-phylo/12bfqfb93a/adding-a-branch-to-a-tree
@@ -37,7 +37,7 @@ add_outgroup_to_phylogeny <- function(
   )
   class(tip) <- "phylo"
   # Attach to any node, in this case to the root. Note: order matters
-  phylogeny <- ape::bind.tree(tip, phylogeny)
+  phylogeny <- ape::bind.tree(tip, phylogeny) # nolint ape does not use snake_case
 
   return(phylogeny)
 }
