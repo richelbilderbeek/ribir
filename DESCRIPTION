@@ -2,7 +2,7 @@ Package: ribir
 Imports:
   ape
 Suggests:
-  beastscriptr,
+  beautier,
   devtools,
   dplyr,
   ggplot2,
@@ -22,7 +22,7 @@ Suggests:
 Remotes:
   jimhester/covr,
   jimhester/lintr,
-  richelbilderbeek/beastscriptr,
+  richelbilderbeek/beautier,
   rsetienne/PBD/PBD,
   MangoTheCat/goodpractice
 Title: ribir, basic phylogenetics page
