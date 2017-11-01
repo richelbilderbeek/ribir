@@ -10,6 +10,7 @@ r_github_packages:
   - beast-dev/RBeast
 
 after_success:
+  - Rscript -e "ribir::is_on_travis()"
   - Rscript -e "lintr::lint_package()"
   - Rscript -e "covr::codecov()"
   - Rscript -e "goodpractice::gp()"
