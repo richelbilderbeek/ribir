@@ -5,7 +5,6 @@ Branch|[![Travis CI logo](TravisCI.png)](https://travis-ci.org)|[![Codecov logo]
 master|[![Build Status](https://travis-ci.org/richelbilderbeek/ribir.svg?branch=master)](https://travis-ci.org/richelbilderbeek/ribir)|[![codecov.io](https://codecov.io/github/richelbilderbeek/ribir/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/ribir/branch/master)
 develop|[![Build Status](https://travis-ci.org/richelbilderbeek/ribir.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/ribir)|[![codecov.io](https://codecov.io/github/richelbilderbeek/ribir/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/ribir/branch/develop)
 
-
 This package tries to bring phylogenetics code closer to real English.
 
 For example:
@@ -25,6 +24,13 @@ This package
  * can be built without warnings and/or notes
  * will not trigger any warning by `lintr`
 
+
+## Build status of builds that `ribir` relies on
+
+master|develop|project
+---|---|---
+[![Build Status](https://travis-ci.org/richelbilderbeek/beautier.svg?branch=master)](https://travis-ci.org/richelbilderbeek/beautier) [![codecov.io](https://codecov.io/github/richelbilderbeek/beautier/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/beautier?branch=master) | [![Build Status](https://travis-ci.org/richelbilderbeek/beautier.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/beautier) [![codecov.io](https://codecov.io/github/richelbilderbeek/beautier/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/beautier?branch=master) | [beautier](https://github.com/richelbilderbeek/beautier)
+[![Build Status](https://travis-ci.org/rsetienne/PBD.svg?branch=master)](https://travis-ci.org/rsetienne/PBD) [![codecov.io](https://codecov.io/github/rsetienne/PBD/coverage.svg?branch=master)](https://codecov.io/github/rsetienne/PBD?branch=master) | [![Build Status](https://travis-ci.org/rsetienne/PBD.svg?branch=develop)](https://travis-ci.org/rsetienne/PBD) [![codecov.io](https://codecov.io/github/rsetienne/PBD/coverage.svg?branch=master)](https://codecov.io/github/rsetienne/PBD?branch=master) | [PBD](https://github.com/rsetienne/PBD)
 
 ## I want to collaborate
 
