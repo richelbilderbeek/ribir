@@ -2,11 +2,11 @@ context("are_identical_alignments")
 
 test_that("are_identical_alignments: use", {
 
-  p <- beastscriptr::create_random_alignment(
+  p <- beautier::create_random_alignment(
     n_taxa = 5,
     sequence_length = 10
   )
-  q <- beastscriptr::create_random_alignment(
+  q <- beautier::create_random_alignment(
     n_taxa = 5,
     sequence_length = 10
   )
@@ -17,7 +17,7 @@ test_that("are_identical_alignments: use", {
 
 test_that("are_identical_alignments: abuse", {
 
-  p <- beastscriptr::create_random_alignment(
+  p <- beautier::create_random_alignment(
     n_taxa = 5,
     sequence_length = 10
   )
