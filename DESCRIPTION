@@ -27,7 +27,8 @@ Remotes:
   MangoTheCat/goodpractice
 Title: ribir, basic phylogenetics page
 Version: 1.1
-Authors@R: person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"))
+Author: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
+Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: This is my personal R package, that is a collection of my personal code snippets.
 Depends:
     R (>= 3.2)
