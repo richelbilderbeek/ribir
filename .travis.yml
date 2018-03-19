@@ -6,6 +6,7 @@ r_github_packages:
   - jimhester/covr
   - MangoTheCat/goodpractice
   - richelbilderbeek/beautier
+  - richelbilderbeek/beastier
   - rsetienne/PBD/PBD
   - beast-dev/RBeast
 
