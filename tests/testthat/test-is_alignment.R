@@ -1,11 +1,11 @@
 context("is_alignment")
 
 test_that("is_alignment: use", {
-  alignment_a <- beautier::create_random_alignment(
+  alignment_a <- beastier:::create_random_alignment(
     n_taxa = 5,
     sequence_length = 10
   )
-  alignment_b <- beautier::create_random_alignment(
+  alignment_b <- beastier:::create_random_alignment(
     n_taxa = 2,
     sequence_length = 1
   )
