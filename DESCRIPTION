@@ -1,6 +1,7 @@
 Package: ribir
 Imports:
-  ape
+  ape,
+  beastier
 Suggests:
   beautier,
   devtools,
@@ -24,6 +25,7 @@ Remotes:
   jimhester/lintr,
   richelbilderbeek/beautier,
   richelbilderbeek/beastier,
+  olli0601/rBEAST,
   rsetienne/PBD/PBD,
   MangoTheCat/goodpractice
 Title: ribir, basic phylogenetics page
