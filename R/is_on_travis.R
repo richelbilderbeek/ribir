@@ -3,5 +3,5 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 is_on_travis <- function() {
-  return(Sys.getenv("TRAVIS") != "")
+  Sys.getenv("TRAVIS") != ""
 }
