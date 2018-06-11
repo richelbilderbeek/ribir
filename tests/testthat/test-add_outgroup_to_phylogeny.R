@@ -1,17 +1,29 @@
 context("add_outgroup_to_phylogeny")
 
-test_that("add_outgroup_to_phylogeny: use", {
+test_that("use", {
 
   phylogeny <- add_outgroup_to_phylogeny(
     phylogeny = ape::rcoal(10),
-    stem_length = 0.0,
-    outgroup_name = "Outgroup"
+    stem_length = 0.0
   )
   expect_equal(class(phylogeny), "phylo")
 })
 
+test_that("outgroup name", {
 
-test_that("add_outgroup_to_phylogeny: abuse", {
+  outgroup_name <- "some name"
+
+  phylogeny <- add_outgroup_to_phylogeny(
+    phylogeny = ape::rcoal(10),
+    stem_length = 0.0,
+    outgroup_name = outgroup_name
+  )
+
+  expect_true(outgroup_name %in% phylogeny$tip.label)
+})
+
+
+test_that("abuse", {
 
   expect_error(
     add_outgroup_to_phylogeny(
