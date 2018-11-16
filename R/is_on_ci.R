@@ -3,7 +3,7 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 is_on_appveyor <- function() {
-  Sys.getenv("APPVEYOR") != ""
+  Sys.getenv("APPVEYOR") != "" # nolint internal function
 }
 
 #' Determines if the environment is Travis CI
@@ -11,7 +11,7 @@ is_on_appveyor <- function() {
 #' @author Richel J.C. Bilderbeek
 #' @export
 is_on_travis <- function() {
-  Sys.getenv("TRAVIS") != ""
+  Sys.getenv("TRAVIS") != "" # nolint internal function
 }
 
 #' Determines if the environment is Travis CI
@@ -19,5 +19,5 @@ is_on_travis <- function() {
 #' @author Richel J.C. Bilderbeek
 #' @export
 is_on_ci <- function() {
-  is_on_appveyor() || is_on_travis()
+  is_on_appveyor() || is_on_travis() # nolint internal function
 }
