@@ -8,7 +8,6 @@ r_github_packages:
   - richelbilderbeek/beautier
   - richelbilderbeek/beastier
   - rsetienne/PBD/PBD
-  - beast-dev/RBeast
 
 after_success:
   - Rscript -e "ribir::is_on_travis()"
