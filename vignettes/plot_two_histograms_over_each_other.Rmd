@@ -71,12 +71,14 @@ df$model <- as.factor(df$model)
 Plot all three:
 
 ```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  df, 
-  ggplot2::aes(x, fill = model)
-) + ggplot2::geom_density(
-  alpha = 0.25
-) + ggplot2::scale_x_continuous("Error", limits = c(0, 0.5))
+if (1 == 2) {
+  ggplot2::ggplot(
+    df, 
+    ggplot2::aes(x, fill = model)
+  ) + ggplot2::geom_density(
+    alpha = 0.25
+  ) + ggplot2::scale_x_continuous("Error", limits = c(0, 0.5))
+}
 ```
 
 Plot only A:
@@ -104,10 +106,12 @@ ggplot2::ggplot(
 Plot only A and C:
 
 ```{r fig.width = 7, fig.height = 7}
-ggplot2::ggplot(
-  df[ df$model == "BD" | df$model == "PBD?", ], 
-  ggplot2::aes(x, fill = model)
-) + ggplot2::geom_density(
-  alpha = 0.25
-) + ggplot2::scale_x_continuous("Error", limits = c(0, 0.5))
+if (1 == 2) {
+  ggplot2::ggplot(
+    df[ df$model == "BD" | df$model == "PBD?", ], 
+    ggplot2::aes(x, fill = model)
+  ) + ggplot2::geom_density(
+    alpha = 0.25
+  ) + ggplot2::scale_x_continuous("Error", limits = c(0, 0.5))
+}
 ```
