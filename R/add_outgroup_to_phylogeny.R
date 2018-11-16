@@ -31,7 +31,7 @@ add_outgroup_to_phylogeny <- function(
   # http://grokbase.com/t/r/r-sig-phylo/12bfqfb93a/adding-a-branch-to-a-tree
   tip <- list(
     edge = matrix(c(2, 1), 1, 2),
-    tip.label = "Outgroup",
+    tip.label = outgroup_name,
     edge.length = crown_age + stem_length,
     Nnode = 1
   )

@@ -1,21 +1,21 @@
 # ribir
 
-Branch|[![Travis CI logo](TravisCI.png)](https://travis-ci.org)|[![Codecov logo](Codecov.png)](https://www.codecov.io)
----|---|---
-master|[![Build Status](https://travis-ci.org/richelbilderbeek/ribir.svg?branch=master)](https://travis-ci.org/richelbilderbeek/ribir)|[![codecov.io](https://codecov.io/github/richelbilderbeek/ribir/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/ribir/branch/master)
-develop|[![Build Status](https://travis-ci.org/richelbilderbeek/ribir.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/ribir)|[![codecov.io](https://codecov.io/github/richelbilderbeek/ribir/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/ribir/branch/develop)
+Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![AppVeyor logo](pics/AppVeyor.png)](https://www.appveyor.com)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
+---|---|---|---
+master|[![Build Status](https://travis-ci.org/richelbilderbeek/ribir.svg?branch=master)](https://travis-ci.org/richelbilderbeek/ribir)|[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/richelbilderbeek/ribir?branch=master&svg=true)](https://ci.appveyor.com/project/richelbilderbeek/ribir)|[![codecov.io](https://codecov.io/github/richelbilderbeek/ribir/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/ribir/branch/master)
+develop|[![Build Status](https://travis-ci.org/richelbilderbeek/ribir.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/ribir)|[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/richelbilderbeek/ribir?branch=develop&svg=true)](https://ci.appveyor.com/project/richelbilderbeek/ribir)|[![codecov.io](https://codecov.io/github/richelbilderbeek/ribir/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/ribir/branch/develop)
 
 This package tries to bring phylogenetics code closer to real English.
 
 For example:
 
-```
+```r
 if (class(p) == "phylo") print("p is a phylogeny")
 ```
 
 becomes:
 
-```
+```r
 if (is_phylogeny(p)) print("p is a phylogeny")
 ```
 

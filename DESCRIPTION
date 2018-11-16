@@ -13,6 +13,7 @@ Suggests:
   nLTT,
   PBD,
   phangorn,
+  rappdirs,
   reshape2,
   rmarkdown,
   testthat,
@@ -20,14 +21,6 @@ Suggests:
   tidyr,
   TreeSim,
   WRS2
-Remotes:
-  jimhester/covr,
-  jimhester/lintr,
-  richelbilderbeek/beautier,
-  richelbilderbeek/beastier,
-  olli0601/rBEAST,
-  rsetienne/PBD/PBD,
-  MangoTheCat/goodpractice
 Title: ribir, basic phylogenetics page
 Version: 1.1
 Author: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
