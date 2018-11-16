@@ -9,13 +9,13 @@ This package tries to bring phylogenetics code closer to real English.
 
 For example:
 
-```
+```r
 if (class(p) == "phylo") print("p is a phylogeny")
 ```
 
 becomes:
 
-```
+```r
 if (is_phylogeny(p)) print("p is a phylogeny")
 ```
 
