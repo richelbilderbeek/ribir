@@ -10,7 +10,7 @@ r_github_packages:
   - jimhester/covr
   - MangoTheCat/goodpractice
   - ropensci/beautier
-  - richelbilderbeek/beastier
+  - ropensci/beastier
   - rsetienne/PBD/PBD
 
 after_success:
