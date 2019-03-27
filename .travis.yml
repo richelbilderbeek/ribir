@@ -8,8 +8,6 @@ r_github_packages:
   - jimhester/lintr
   - jimhester/covr
   - MangoTheCat/goodpractice
-  - ropensci/beautier
-  - ropensci/tracerer
   - ropensci/beastier
   - rsetienne/PBD/PBD
 
