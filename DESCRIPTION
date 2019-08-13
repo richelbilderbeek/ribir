@@ -1,4 +1,5 @@
 Package: ribir
+Version: 1.2
 Imports:
     ape,
     beastier
@@ -22,7 +23,6 @@ Suggests:
     TreeSim,
     WRS2
 Title: ribir, basic phylogenetics page
-Version: 1.1
 Author: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: This is my personal R package, that is a 
