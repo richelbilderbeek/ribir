@@ -1,8 +1,6 @@
 language: r
+dist: bionic
 cache: packages
-
-os: 
-  - linux
 
 r_github_packages:
   - jimhester/lintr
