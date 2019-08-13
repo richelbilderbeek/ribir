@@ -1,0 +1,10 @@
+test_that("use", {
+  expect_silent(check_phylogeny(ape::rcoal(n = 5)))
+  expect_error(check_phylogeny(ape::rmtree(N = 2, n = 10)))
+  expect_error(check_phylogeny(42))
+  expect_error(check_phylogeny(3.14))
+  expect_error(check_phylogeny("Hello"))
+  expect_error(check_phylogeny(NULL))
+  expect_error(check_phylogeny(NA))
+  expect_error(check_phylogeny(Inf))
+})

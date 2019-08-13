@@ -4,7 +4,8 @@
 \alias{add_outgroup_to_phylogeny}
 \title{Adds an outgroup to a phylogeny}
 \usage{
-add_outgroup_to_phylogeny(phylogeny, stem_length, outgroup_name = "Outgroup")
+add_outgroup_to_phylogeny(phylogeny, stem_length,
+  outgroup_name = "Outgroup")
 }
 \arguments{
 \item{phylogeny}{a phylogeny}

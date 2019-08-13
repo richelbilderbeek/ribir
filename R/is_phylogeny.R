@@ -1,8 +1,14 @@
 #' Checks if the input is a phylogeny
-#' @param x input to be checked
+#' @param phylogeny input to be checked
 #' @return TRUE or FALSE
 #' @author Richel Bilderbeek
 #' @export
-is_phylogeny <- function(x) {
-  return(class(x) == "phylo")
+is_phylogeny <- function(phylogeny) {
+  is_phylogeny <- FALSE
+  tryCatch({
+    check_phylogeny(phylogeny)
+    is_phylogeny <- TRUE
+  }, error = function(e) {} # nolint indeed no use of e, empty function indeed
+  )
+  is_phylogeny
 }

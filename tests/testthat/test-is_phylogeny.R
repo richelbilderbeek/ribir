@@ -6,4 +6,7 @@ test_that("is_phylogeny: use", {
   expect_false(is_phylogeny(42))
   expect_false(is_phylogeny(3.14))
   expect_false(is_phylogeny("Hello"))
+  expect_false(is_phylogeny(NULL))
+  expect_false(is_phylogeny(NA))
+  expect_false(is_phylogeny(Inf))
 })
