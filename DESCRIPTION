@@ -1,7 +1,7 @@
 Package: ribir
 Imports:
-  ape,
-  beastier
+    ape,
+    beastier
 Suggests:
     beautier,
     devtools,
@@ -25,7 +25,8 @@ Title: ribir, basic phylogenetics page
 Version: 1.1
 Author: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
-Description: This is my personal R package, that is a collection of my personal code snippets.
+Description: This is my personal R package, that is a 
+    collection of my personal code snippets.
 Depends:
     R (>= 3.2)
 License: file LICENSE

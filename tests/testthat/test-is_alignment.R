@@ -16,4 +16,7 @@ test_that("is_alignment: use", {
   expect_true(!is_alignment(42))
   expect_true(!is_alignment(3.14))
   expect_true(!is_alignment("Hello"))
+  expect_true(!is_alignment(NULL))
+  expect_true(!is_alignment(NA))
+  expect_true(!is_alignment(Inf))
 })
