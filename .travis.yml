@@ -6,7 +6,6 @@ r_github_packages:
   - jimhester/lintr
   - jimhester/covr
   - MangoTheCat/goodpractice
-  - ropensci/beastier
   - rsetienne/PBD/PBD
 
 before_install:

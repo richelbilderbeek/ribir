@@ -1,10 +1,8 @@
 Package: ribir
 Version: 1.2
 Imports:
-    ape,
-    beastier
+    ape
 Suggests:
-    beautier,
     devtools,
     dplyr,
     ggplot2,

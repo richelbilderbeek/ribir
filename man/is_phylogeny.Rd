@@ -4,10 +4,10 @@
 \alias{is_phylogeny}
 \title{Checks if the input is a phylogeny}
 \usage{
-is_phylogeny(x)
+is_phylogeny(phylogeny)
 }
 \arguments{
-\item{x}{input to be checked}
+\item{phylogeny}{input to be checked}
 }
 \value{
 TRUE or FALSE
