@@ -6,7 +6,7 @@
 is_phylogeny <- function(phylogeny) {
   is_phylogeny <- FALSE
   tryCatch({
-    check_phylogeny(phylogeny) # nolint ribir function
+    ribir::check_phylogeny(phylogeny)
     is_phylogeny <- TRUE
   }, error = function(e) {} # nolint indeed no use of e, empty function indeed
   )
