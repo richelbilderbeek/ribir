@@ -3,7 +3,7 @@
 #' Per FASTA file, one random phylogeny is created,
 #' with the same taxa names as that FASTA file.
 #' All phylogenies have the same crown age.
-#' @inheritParams default_params_doc
+#' @inheritParams beautier::default_params_doc
 #' @return a \code{multiPhylo} with as much phylogenies
 #'   as there were FASTA filenames. Each phylogeny has
 #'   the same taxa names as its corresponding FASTA file.

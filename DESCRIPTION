@@ -1,7 +1,8 @@
 Package: ribir
 Version: 1.2
 Imports:
-    ape
+    ape,
+    geiger
 Suggests:
     devtools,
     dplyr,
@@ -29,7 +30,7 @@ Depends:
     R (>= 3.2)
 License: file LICENSE
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Encoding: UTF-8
 VignetteBuilder: knitr
 URL: https://github.com/richelbilderbeek/ribir
