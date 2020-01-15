@@ -27,9 +27,7 @@ Author: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: This is my personal R package, that is a 
     collection of my personal code snippets.
-Depends:
-    R (>= 3.2)
-License: file LICENSE
+License: GPL-3
 LazyData: true
 RoxygenNote: 7.0.2
 Encoding: UTF-8
