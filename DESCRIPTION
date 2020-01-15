@@ -2,6 +2,7 @@ Package: ribir
 Version: 1.2
 Imports:
     ape,
+    beautier,
     geiger
 Suggests:
     devtools,
