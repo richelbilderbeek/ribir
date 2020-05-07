@@ -4,7 +4,7 @@
 #'   is determined not to be  output of PBD::pbd_sim
 #' @return TRUE or FALSE
 #' @export
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 is_pbd_sim_output <- function(
   pbd_sim_output,
   verbose = FALSE

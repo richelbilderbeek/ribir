@@ -5,7 +5,7 @@
 #' @param outgroup_name How is the outgroup named?
 #' @return A phylogeny, of type phylo
 #' @export
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 add_outgroup_to_phylogeny <- function(
   phylogeny,
   stem_length,

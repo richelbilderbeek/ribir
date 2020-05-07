@@ -8,7 +8,7 @@
 #'   q <- ape::rcoal(10)
 #'   testit::assert(are_identical_phylogenies(p, p))
 #'   testit::assert(!are_identical_phylogenies(p, q))
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 #' @export
 are_identical_phylogenies <- function(p, q) {
   if (!is_phylogeny(p)) {

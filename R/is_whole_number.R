@@ -3,7 +3,7 @@
 #' @param tolerance the maximum error a number may deviate from a whole number,
 #'   before it is labeled as a floating point value
 #' @return TRUE or FALSE
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 #' @export
 is_whole_number <- function(
   x,

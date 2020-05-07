@@ -1,7 +1,7 @@
 #' Checks if the input is a phylogeny
 #' @param phylogeny input to be checked
 #' @return TRUE or FALSE
-#' @author Richel Bilderbeek
+#' @author Richèl Bilderbeek
 #' @export
 is_phylogeny <- function(phylogeny) {
   is_phylogeny <- FALSE

@@ -2,7 +2,7 @@
 #'
 #' Will stop if not, will do nothing otherwise
 #' @param phylogeny object to be checked
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 check_phylogeny <- function(phylogeny) {
   if (class(phylogeny) != "phylo") {
