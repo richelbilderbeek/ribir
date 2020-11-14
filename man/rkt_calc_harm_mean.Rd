@@ -16,5 +16,5 @@ the harmonic mean of vector \code{x}
 Calculate the harmonic mean of a numeric vector
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

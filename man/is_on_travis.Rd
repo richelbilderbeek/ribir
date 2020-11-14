@@ -19,7 +19,7 @@ Determines if the environment is Travis CI
 Determines if the environment is Travis CI
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

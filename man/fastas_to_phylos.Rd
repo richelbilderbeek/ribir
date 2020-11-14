@@ -27,7 +27,7 @@ All phylogenies have the same crown age.
   # Create two random phylogies, with
   # - the same taxa names as the FASTA files
   # - the desired crown age
-  fasta_filenames <- get_beautier_paths(
+  fasta_filenames <- beautier::get_beautier_paths(
     c("anthus_aco.fas")
   )
   initial_phylogenies <- fastas_to_phylos(

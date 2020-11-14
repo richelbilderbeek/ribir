@@ -26,5 +26,5 @@ as parsed by olli's rBEAST package its function beast2out.read.trees
   testit::assert(!are_identical_phylogenies(p, q))
 }
 \author{
-Richel Bilderbeek
+Richèl Bilderbeek
 }

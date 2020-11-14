@@ -12,7 +12,7 @@
 #'   # Create two random phylogies, with
 #'   # - the same taxa names as the FASTA files
 #'   # - the desired crown age
-#'   fasta_filenames <- get_beautier_paths(
+#'   fasta_filenames <- beautier::get_beautier_paths(
 #'     c("anthus_aco.fas")
 #'   )
 #'   initial_phylogenies <- fastas_to_phylos(
@@ -32,7 +32,7 @@ fastas_to_phylos <- function(fasta_filenames, crown_age) {
   phylos <- list()
   for (i in seq_along(fasta_filenames)) {
     fasta_filename <- fasta_filenames[i]
-    phylos[[i]] <- beautier::fasta_to_phylo(fasta_filename, crown_age)
+    phylos[[i]] <- ribir::fasta_to_phylo(fasta_filename, crown_age)
   }
   testit::assert(length(phylos) == length(fasta_filenames))
   phylos

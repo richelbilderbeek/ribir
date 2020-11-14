@@ -7,7 +7,7 @@
 #'   # Create a random phylogeny, with
 #'   # - the same taxa names as the FASTA file
 #'   # - the desired crown age
-#'   fasta_filename <- get_fasta_filename()
+#'   fasta_filename <- beautier::get_fasta_filename()
 #'   initial_phylogeny <- fasta_to_phylo(
 #'     fasta_filename,
 #'     crown_age = 15

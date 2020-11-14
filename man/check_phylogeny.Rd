@@ -13,5 +13,5 @@ check_phylogeny(phylogeny)
 Will stop if not, will do nothing otherwise
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

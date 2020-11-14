@@ -21,5 +21,5 @@ A phylogeny, of type phylo
 Adds an outgroup to a phylogeny
 }
 \author{
-Richel Bilderbeek
+Richèl Bilderbeek
 }
