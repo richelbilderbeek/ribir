@@ -11,7 +11,9 @@ test_that("use, one FASTA filename", {
 
 test_that("use, two FASTA filenames", {
 
-  fasta_filenames <- beautier::get_beautier_paths(c("anthus_aco.fas", "anthus_nd2.fas"))
+  fasta_filenames <- beautier::get_beautier_paths(
+    c("anthus_aco.fas", "anthus_nd2.fas")
+  )
   crown_age <- 36.0
   phylos <- fastas_to_phylos(
     fasta_filenames = fasta_filenames,
