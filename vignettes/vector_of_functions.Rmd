@@ -10,11 +10,11 @@ vignette: >
 ---
 
 ```{r}
-f <- function(x, y) { 
-  return (x + y) 
+f <- function(x, y) {
+  return (x + y)
 }
-g <- function(x, y) { 
-  return (x - y) 
+g <- function(x, y) {
+  return (x - y)
 }
 
 v <- c(f, g)

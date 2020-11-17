@@ -66,7 +66,7 @@ one has to add the index of each observation
 
 ```{r}
 df <- data.frame(
-  treatment = rep("A", 10), 
+  treatment = rep("A", 10),
   replicate = rep(c("B","C"), each = 5),
   i = rep(1:5, times = 2), # You will get 'Duplicate identifiers for rows' if you remove this
   x = c(runif(5), rnorm(5)),

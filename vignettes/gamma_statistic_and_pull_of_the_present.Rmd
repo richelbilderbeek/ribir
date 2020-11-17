@@ -12,7 +12,7 @@ vignette: >
 ```{r}
 set.seed(42)
 trees <- TreeSim::sim.bd.age(
-  age = 10, numbsim = 2, lambda = 0.2, mu = 0.0, 
+  age = 10, numbsim = 2, lambda = 0.2, mu = 0.0,
   complete = FALSE
 )
 ape::plot.phylo(trees[[1]])

@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Here I tested how to do correct file I/O by writing a data frame 
+Here I tested how to do correct file I/O by writing a data frame
 with column and row names to a `.csv`
 and then loading a data frame from that `.csv` again.
 The content, row names and column names should be present in the loaded
@@ -37,9 +37,9 @@ Loading:
 
 ```{r}
 
-df_out <- read.csv(file = csv_filename, 
-  header = TRUE, 
-  stringsAsFactors = FALSE, 
+df_out <- read.csv(file = csv_filename,
+  header = TRUE,
+  stringsAsFactors = FALSE,
   row.names = 1
 )
 knitr::kable(head(df_out))

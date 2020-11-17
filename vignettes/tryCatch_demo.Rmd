@@ -33,8 +33,8 @@ Running this code fill stop the program. Here is to check for this:
 xs <- c(1,2,4,8,16,32,42,64)
 for (x in xs) {
   tryCatch(
-    print(f(x)), 
-    error = function(x) { message("skipped x") } 
+    print(f(x)),
+    error = function(x) { message("skipped x") }
   )
 }
 ```

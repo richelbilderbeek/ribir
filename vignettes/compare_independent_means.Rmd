@@ -20,12 +20,12 @@ scores1 <- rnorm(n = n, mean = 1, sd  = 0.5)
 scores2 <- runif(n = n, min  = 0, max = 4  )
 
 df_same <- data.frame(
-  score = c(scores1, scores1), 
+  score = c(scores1, scores1),
   treatment = c(rep(1, n), rep(2, n))
 )
 
 df_different <- data.frame(
-  score = c(scores1, scores2), 
+  score = c(scores1, scores2),
   treatment = c(rep(1, times = n), rep(2, times = n))
 )
 df_different$treatment <- as.factor(df_different$treatment)
@@ -85,7 +85,7 @@ df <- data.frame(
     WRS2::pb2gen(score ~ treatment, data = df_same)$p.value,
     WRS2::pb2gen(score ~ treatment, data = df_different)$p.value
   )
-)    
+)
 knitr::kable(df)
 ```
 
@@ -138,23 +138,23 @@ scores1 <- rnorm(n = 10, mean = 1, sd = 0.5)
 scores2 <- rnorm(n = 10, mean = 2, sd = 0.5)
 
 df_same <- data.frame(
-  score = c(scores1, scores1), 
+  score = c(scores1, scores1),
   treatment = c(rep(1, 10), rep(2, 10))
 )
 
 df_different <- data.frame(
-  score = c(scores1, scores2), 
+  score = c(scores1, scores2),
   treatment = c(rep(1, 10), rep(2, 10))
 )
 
 p_same <- WRS2::yuenbt(
-  score ~ treatment, 
+  score ~ treatment,
   data = df_same,
   nboot = 2000
 )$p.value
 
 p_different <- WRS2::yuenbt(
-  score ~ treatment, 
+  score ~ treatment,
   data = df_different,
   nboot = 2000
 )$p.value
@@ -195,12 +195,12 @@ scores1 <- rnorm(n = 10, mean = 1, sd = 0.5)
 scores2 <- rnorm(n = 10, mean = 2, sd = 0.5)
 
 df_same <- data.frame(
-  score = c(scores1, scores1), 
+  score = c(scores1, scores1),
   treatment = c(rep(1, 10), rep(2, 10))
 )
 
 df_different <- data.frame(
-  score = c(scores1, scores2), 
+  score = c(scores1, scores2),
   treatment = c(rep(1, 10), rep(2, 10))
 )
 
