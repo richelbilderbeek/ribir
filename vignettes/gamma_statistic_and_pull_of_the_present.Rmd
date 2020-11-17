@@ -25,5 +25,4 @@ for (i in seq_along(trees)) {
 }
 
 gammas
-
 ```

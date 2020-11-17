@@ -17,7 +17,7 @@ Following [1] (chapter 9.5.2.7 'Robust methods to compare independent means', pa
 set.seed(314)
 n <- 30
 scores1 <- rnorm(n = n, mean = 1, sd  = 0.5)
-scores2 <- runif(n = n, min  = 0, max = 4  )
+scores2 <- runif(n = n, min  = 0, max = 4.0)
 
 df_same <- data.frame(
   score = c(scores1, scores1),
@@ -51,7 +51,7 @@ as a density plot:
 ggplot2::ggplot(
   df_different,
   ggplot2::aes(x = df_different$score, fill = df_different$treatment)
-)+ ggplot2::geom_density(
+) + ggplot2::geom_density(
   alpha = 0.5
 )
 ```
@@ -232,7 +232,6 @@ if (p_different >= p_critical) {
 } else {
   print("p_different means are significantly different")
 }
-
 ```
 
 ## References
