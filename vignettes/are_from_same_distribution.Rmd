@@ -52,8 +52,9 @@ df$treatment <- as.factor(df$treatment)
 knitr::kable(df)
 
 
-df_new <- df %>% group_by(treatment) %>%
-  summarise(p_value = wilcox.test(d1, d2)$p.value)
+df_new <- df %>% group_by(treatment) %>% summarise(
+  p_value = wilcox.test(d1, d2)$p.value
+)
 
 knitr::kable(df_new)
 ```
