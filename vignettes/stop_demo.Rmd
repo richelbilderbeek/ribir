@@ -34,7 +34,7 @@ xs <- c(1, 2, 4, 8, 16, 32, 42, 64)
 for (x in xs) {
   tryCatch(
     print(f(x)),
-    error = function(msg) print(msg)
+    error = function(e) print(e)
   )
 }
 ```

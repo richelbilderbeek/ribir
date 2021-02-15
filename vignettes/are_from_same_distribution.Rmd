@@ -52,7 +52,7 @@ df$treatment <- as.factor(df$treatment)
 knitr::kable(df)
 
 
-df_new <- df %>% group_by(treatment) %>% 
+df_new <- df %>% group_by(treatment) %>%
   summarise(p_value = wilcox.test(d1, d2)$p.value)
 
 knitr::kable(df_new)
@@ -69,7 +69,7 @@ one has to add the index of each observation
 df <- data.frame(
   treatment = rep("A", 10),
   replicate = rep(c("B", "C"), each = 5),
-  i = rep(1:5, times = 2), 
+  i = rep(1:5, times = 2),
   x = c(runif(5), rnorm(5)),
   stringsAsFactors = FALSE
 )
@@ -84,8 +84,8 @@ df <- subset(df, select = -c(i))
 knitr::kable(df)
 
 # Now we can compare the columns
-df_new <- df %>% 
-  group_by(treatment) %>% 
+df_new <- df %>%
+  group_by(treatment) %>%
   summarise(p_value = wilcox.test(B, C)$p.value)
 
 knitr::kable(df_new)
