@@ -50,9 +50,8 @@ Now these distributions are put in a data frame, replicates in a different colum
 df <- data.frame(treatment = rep("A", 10), d1 = runif(10), d2 = rnorm(10))
 df$treatment <- as.factor(df$treatment)
 knitr::kable(df)
-df_new <- df %>% group_by(treatment) %>% summarise(
-  p_value = wilcox.test(d1, d2)$p.value
-)
+df_new <- df %>% group_by(treatment) %>%
+   summarise(p_value = wilcox.test(d1, d2)$p.value)
 knitr::kable(df_new)
 ```
 
