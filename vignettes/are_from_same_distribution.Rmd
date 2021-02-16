@@ -53,7 +53,7 @@ knitr::kable(df)
 ```
 
 ```{r}
-df_new <- df %>% group_by(treatment) %>%
+df_new <- df %>% group_by(treatment) %>% # nolint
    summarise(p_value = wilcox.test(d1, d2)$p.value)
 knitr::kable(df_new)
 ```
