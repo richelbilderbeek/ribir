@@ -15,7 +15,7 @@ before_install:
 
 after_failure:
   # Download thesis
-  - wget https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf
+  - wget https://pure.rug.nl/ws/files/132028374/Complete_thesis.pdf
 
 after_success:
   - Rscript -e "ribir::is_on_appveyor()"
@@ -24,6 +24,6 @@ after_success:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then Rscript -e 'covr::codecov()'; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then Rscript -e 'goodpractice::gp()'; fi
   # Download thesis
-  - wget https://www.rug.nl/research/portal/files/132028374/Complete_thesis.pdf
+  - wget https://pure.rug.nl/ws/files/132028374/Complete_thesis.pdf
 
 
