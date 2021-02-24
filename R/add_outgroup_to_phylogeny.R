@@ -12,7 +12,7 @@ add_outgroup_to_phylogeny <- function(
   outgroup_name = "Outgroup"
 ) {
 
-  if (!is_phylogeny(phylogeny)) {
+  if (!ribir::is_phylogeny(phylogeny)) {
     stop("phylogeny must be a phylogeny")
   }
   if (class(stem_length) != "numeric") {

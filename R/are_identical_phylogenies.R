@@ -11,10 +11,10 @@
 #' @author Richèl Bilderbeek
 #' @export
 are_identical_phylogenies <- function(p, q) {
-  if (!is_phylogeny(p)) {
+  if (!ribir::is_phylogeny(p)) {
     stop("p must be a phylogeny")
   }
-  if (!is_phylogeny(q)) {
+  if (!ribir::is_phylogeny(q)) {
     stop("q must be a phylogeny")
   }
   return(ape::all.equal.phylo(p, q))
