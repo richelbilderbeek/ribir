@@ -28,7 +28,6 @@ Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: This is my personal R package, that is a 
     collection of my personal code snippets.
 License: GPL-3
-LazyData: true
 RoxygenNote: 7.1.1
 Encoding: UTF-8
 VignetteBuilder: knitr
