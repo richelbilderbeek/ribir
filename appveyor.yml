@@ -22,7 +22,7 @@ environment:
     USE_RTOOLS: true
 
 build_script:
-  - travis-tool.sh install_github jimhester/covr
+  - travis-tool.sh install_github r-lib/covr
   - travis-tool.sh install_github jimhester/lintr
   - travis-tool.sh install_github MangoTheCat/goodpractice
   - travis-tool.sh install_deps
